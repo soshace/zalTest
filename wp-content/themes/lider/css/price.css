@@ -1,0 +1,107 @@
+/*//// Price ////////////////////////////*/
+.price {
+	padding-bottom: 8px;
+}
+
+.price .card_tb {
+	min-height: 300px;
+}
+
+.price ul {
+	margin: 8px;
+	padding: 0;
+}
+
+.price li {
+	display: block;
+	padding: 12px 0;
+	border-top: #efefef 1px solid;
+	font-size: 12px;
+}
+
+.price p {
+	min-height: 24px;
+}
+
+.price li span {
+	text-align: right;
+	float: right;
+	color: #000;
+}
+
+.price .annotation{
+	font-size: 12px;
+	font-style: italic;
+	color: #b2b2b2;
+}
+
+.info {
+	background: #fff;
+}
+
+/*//// Media ////////////////////////////*/
+@media (max-width: 1290px) {
+.header .social {
+      display: none;
+    }
+}
+
+@media (max-width: 1180px) {
+  .header .desktop {
+    display: none;
+  }
+
+  .header .mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .p50 {
+    width: 100%;
+  }
+
+  .p33 {
+    width: 100%;
+  }
+
+  .p25 {
+    width: 100%;
+  }
+
+  .p66 {
+    width: 100%;
+  }
+
+  .p75 {
+    width: 100%;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .header .logo {
+    margin: 0;
+  }
+
+  .header ul {
+    margin: 0;
+  }
+
+  .wrapper {
+    padding-top: 80px;
+  }
+
+  .menu_mobile {
+    top: 80px;
+  }
+
+  h1 {
+    font-size: 60px;
+  }
+
+  .footer .copy {
+  	display: none;
+  }
+}

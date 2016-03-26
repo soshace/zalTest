@@ -1,0 +1,103 @@
+/* web fonts ///////////////////////////////////////////////////////////////////////////////////////*/
+@font-face { font-family: Roboto_Bold; src: url(../fonts/Helvetica/HelveticaNeueCyr-Bold.otf); }
+@font-face { font-family: Helvetica; src: url(../fonts/Helvetica/HelveticaNeueCyr-Roman.otf); }
+@font-face { font-family: Helvetica_Light; src: url(../fonts/Helvetica/HelveticaNeueCyr-Light.otf); }
+@font-face { font-family: Helvetica_Thin; src: url(../fonts/Helvetica/HelveticaNeueCyr-Thin.otf); }
+
+h1       { font-size: 72px;       line-height: 1em;       font-family: "Helvetica_Thin";    }
+h2       { font-size: 48px;       line-height: 1em;       font-family: "Helvetica_Thin";    }
+h3       { font-size: 32px;       line-height: 1em;       font-family: "Helvetica_Thin";    }
+h4       { font-size: 24px;       line-height: 1.125em;   font-family: "Helvetica_Thin";    }
+p        { font-size: 18px;       line-height: 1.5em;     font-family: "Helvetica_Light";   }
+p .small { font-size: 12px;       line-height: 1.5em;     font-family: "Helvetica";         }
+a        { font-size: 16px;       line-height: 1.25em;    font-family: "Helvetica";         }
+input    { font-size: 16px;       line-height: 1.25em;    font-family: "Helvetica";         }
+button   { font-size: 16px;       line-height: 1.25em;    font-family: "Helvetica";         }
+ul       { font-size: 16px;       line-height: 1.25em;    font-family: "Helvetica";         }
+
+/* Elements styles /////////////////////////////////////////////////////////////////////////////////*/
+
+* {
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	/*-webkit-transition: all .5s cubic-bezier(0, 0, 0.03, 0.98);
+	   -moz-transition: all .5s cubic-bezier(0, 0, 0.03, 0.98);
+	    -ms-transition: all .5s cubic-bezier(0, 0, 0.03, 0.98);
+	     -o-transition: all .5s cubic-bezier(0, 0, 0.03, 0.98);
+	        transition: all .5s cubic-bezier(0, 0, 0.03, 0.98);*/
+}
+
+html, body { margin: 0;	padding: 0; font-size: 100%; }
+section { width: 100%; overflow: hidden; }
+p, a, button, input, h1, h2, h3, h4, textarea { display: inline-block; margin: 8px;}
+input, button, textarea { padding: 12px; }
+img, button, input, textarea{ width: 100%; }
+
+/* Content styles //////////////////////////////////////////////////////////////////////////////////*/
+
+.section_padding { padding: 24px 8px; }
+.section_no_padding { padding: 24px 0; }
+
+.conteiner { width: 100%; max-width: 960px; margin: auto; }
+.conteiner:after { content: "."; visibility: hidden; clear: both; display: block; height: 0; }
+
+.block { position: relative; margin: auto; }
+.block_float_left { position: relative; float: left; }
+.block_float_right { position: relative; float: right; }
+
+.card { padding: 0; }
+.card_padding { padding: 12px 0; }
+.card_padding_top { padding: 12px 0 0 0; }
+.card_padding_bottom { padding: 0 0 12px 0; }
+
+.line { padding: 0; }
+.line_padding { padding: 4px 16px; }
+.line_padding_left { padding: 4px 0 4px 8px; }
+.line_padding_right { padding: 4px 8px 4px 0; }
+.line_padding_top { padding: 4px 0 0 0; }
+.line_padding_bottom { padding: 0 0 4px 0; }
+
+.content { margin: 8px; display: inline-block; }
+.content_float_left { margin: 8px; display: block; float: left; }
+.content_float_right { margin: 8px; display: block; float: right; }
+
+.icon { margin: 8px; width: 20px; height: 20px; }
+
+.button { padding: 12px 24px; }
+
+/* Grid 60em ///////////////////////////////////////////////////////////////////////////////////////*/
+
+.p100 { width: 100%; }
+.p75 { width: 75%; }
+.p66 { width: 66.66%; }
+.p50 { width: 50%; }
+.p33 { width: 33.33%; }
+.p25 { width: 25%; }
+
+.offset_p100 { margin-left: 100%; }
+.offset_p75 { margin-left: 75%; }
+.offset_p66 { margin-left: 66.66%; }
+.offset_p50 { margin-left: 50%; }
+.offset_p33 { margin-left: 33.33%; }
+.offset_p25 { margin-left: 25%; }
+
+
+
+/* Media requests "Retina" /////////////////////////////////////////////////////////////////////////*/
+
+@media (max-width: 600px) {
+	.p75, .p66, .p50, .p33 {
+		width: 100%;
+	}
+
+	.p25 {
+		width: 50%;
+	}
+}
+
+@media (max-width: 480px) {
+	.p75, .p66, .p50, .p33, .p25 {
+		width: 100%;
+	}
+}

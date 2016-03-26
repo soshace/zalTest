@@ -1,0 +1,55 @@
+* {
+	box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  -webkit-box-sizing:border-box; 
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background: #e5e5e5;
+}
+
+input, textarea {
+	
+	width: 480px;
+	height: 44px;
+	background: #fff;
+	border: none;
+	margin: 8px;
+	padding: 12px;
+	display: block;
+}
+
+textarea {
+	height: 200px;
+}
+
+.submit {
+	font-size: 16px;
+	line-height: 20px;
+	color: #fff;
+	text-decoration: none;
+	text-align: center;
+	margin: 8px;
+	padding: 12px;
+	display: block;
+	width: 480px;
+	background: #2B71CD;
+}
+
+.successMessage {
+	color: #00ff00;
+}
+
+.errorMessage {
+	color: #ff0000;
+}
+
+.correctFied {
+	background: #00ff00;
+}
+
+.wrongField {
+	background: #ff0000;
+}

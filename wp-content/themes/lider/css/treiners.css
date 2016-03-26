@@ -1,0 +1,154 @@
+/*//// Treiners ////////////////////////////*/
+.treiners .kredo {
+	font-style: italic;
+	font-size: 16px;
+	border-bottom: #efefef 1px solid;
+	padding-bottom: 12px;
+	color: #a9a9a9;
+}
+
+.treiners .kredo:before {
+	content: "«";
+	font-size: 24px;
+	margin-right: 8px;
+	color: #efefef;
+	vertical-align: middle;
+    font-style: normal;
+    speak: none;
+}
+
+.treiners .phone {
+	font-size: 16px;
+	border-bottom: #efefef 1px solid;
+	padding-bottom: 12px;
+}
+
+.treiners .phone:before {
+	content: "\e82a";
+	font-family: "Icon_Set";
+	vertical-align: middle;
+	line-height: 1;
+    font-style: normal;
+    margin-right: 8px;
+    color: #000;
+}
+
+.treiners .vk:before {
+	content: "\e866";
+	font-family: "Icon_Set";
+	font-size: 16px;
+	vertical-align: middle;
+	line-height: 24px;
+    font-style: normal;
+    speak: none;
+	color: #000;
+}
+
+.treiners .vk {
+	float: right;
+	margin-top: -2px;
+}
+
+.treiners .vk:hover {
+	opacity: .5;
+}
+
+.treiners .direction {
+	padding-top: 12px;
+	border-top: #efefef 1px solid;
+}
+
+.treiners .card {
+	overflow: hidden;
+	position: relative;
+}
+
+.treiners .image, .treiners .text {
+	position: relative;
+	float: left;
+}
+
+.treiners .image {
+	position: absolute;
+	height: 100%;
+}
+
+.treiners .text:after {
+	content: " ";
+	height: 0;
+	clear: both;
+}
+/*//// Media ////////////////////////////*/
+@media (max-width: 1290px) {
+.header .social {
+      display: none;
+    }
+}
+
+@media (max-width: 1180px) {
+  .header .desktop {
+    display: none;
+  }
+
+  .header .mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  .p50 {
+		width: 100%;
+	}
+
+	.p33 {
+		width: 100%;
+	}
+
+	.p25 {
+		width: 100%;
+	}
+
+	.p66 {
+		width: 100%;
+	}
+
+	.p75 {
+		width: 100%;
+	}
+
+	.header {
+		padding: 0;
+	}
+
+	.header .logo {
+		margin: 0;
+	}
+
+	.header ul {
+		margin: 0;
+	}
+
+	.wrapper {
+		padding-top: 80px;
+	}
+
+	.menu_mobile {
+		top: 80px;
+	}
+
+	h1 {
+		font-size: 60px;
+	}
+
+  .treiners .image {
+	position: relative;
+	}
+
+.treiners .offset25 {
+	margin: 0;
+}
+
+  .footer .copy {
+  	display: none;
+  }
+}

@@ -1,0 +1,71 @@
+/* Roboto ////////////////////////////////////////////////////////////////////////////////////////*/
+@font-face { font-family: Roboto; font-style: normal; font-weight: 300; src: url(./fonts/Roboto/Thin.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 300; src: url(./fonts/Roboto/Thin_italic.ttf); }
+@font-face { font-family: Roboto; font-style: normal; font-weight: 400; src: url(./fonts/Roboto/Light.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 400; src: url(./fonts/Roboto/Light_italic.ttf); }
+@font-face { font-family: Roboto; font-style: normal; font-weight: 500; src: url(./fonts/Roboto/Regular.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 500; src: url(./fonts/Roboto/Italic.ttf); }
+@font-face { font-family: Roboto; font-style: normal; font-weight: 600; src: url(./fonts/Roboto/Medium.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 600; src: url(./fonts/Roboto/Medium_italic.ttf); }
+@font-face { font-family: Roboto; font-style: normal; font-weight: 700; src: url(./fonts/Roboto/Bold.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 700; src: url(./fonts/Roboto/Bold_italic.ttf); }
+@font-face { font-family: Roboto; font-style: normal; font-weight: 900; src: url(./fonts/Roboto/Black.ttf); }
+@font-face { font-family: Roboto; font-style: italic; font-weight: 900; src: url(./fonts/Roboto/Black_italic.ttf); }
+
+/* Roboto Condensed ////////////////////////////////////////////////////////////////////////////////////////*/
+@font-face { font-family: Roboto_Condensed; font-style: normal; font-weight: 400; src: url(./fonts/Roboto/Condensed_light.ttf); }
+@font-face { font-family: Roboto_Condensed; font-style: italic; font-weight: 400; src: url(./fonts/Roboto/Condensed_light_italic.ttf); }
+@font-face { font-family: Roboto_Condensed; font-style: normal; font-weight: 500; src: url(./fonts/Roboto/Condensed_regular.ttf); }
+@font-face { font-family: Roboto_Condensed; font-style: italic; font-weight: 500; src: url(./fonts/Roboto/Condensed_italic.ttf); }
+@font-face { font-family: Roboto_Condensed; font-style: normal; font-weight: 700; src: url(./fonts/Roboto/Condensed_bold.ttf); }
+@font-face { font-family: Roboto_Condensed; font-style: italic; font-weight: 700; src: url(./fonts/Roboto/Condensed_bold_italic.ttf); }
+
+/* Icons ////////////////////////////////////////////////////////////////////////////////////////////////*/
+@font-face { font-family: Icon_Set; src: url(./fonts/Icons/60em.ttf); }
+@font-face { font-family: Material_icons; src: url(./fonts/Icons/MaterialDesignIcons.ttf); }
+
+body { font-kerning: normal; -webkit-font-kerning: normal; }
+
+.fs_12 {
+	font-size: 12px;
+	line-height: 1.5em;
+}
+
+.fs_16,
+body, p, a, button,
+li, input, textarea {
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+.fs_24, h4 {
+	font-size: 24px;
+	line-height: 1.125em;
+}
+
+.fs_32, h3 {
+	font-size: 32px;
+	line-height: 1em;
+}
+
+.fs_48, h2 {
+	font-size: 48px;
+	line-height: 1em;
+}
+
+.fs_72, h1 {
+	font-size: 72px;
+	line-height: 1em;
+}
+
+a, p {
+	margin: .75em 8px;
+}
+
+h4 {
+	margin: .625em 8px;
+}
+
+h3, h2, h1 {
+	margin: .5em 8px;
+}

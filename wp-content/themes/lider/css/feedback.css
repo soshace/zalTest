@@ -1,0 +1,111 @@
+/*//// feedback ////////////////////////////*/
+.feedback .card {
+	overflow: hidden;
+	position: relative;
+		min-height: 232px;
+}
+
+.feedback .image, .feedback .text {
+	position: relative;
+	float: left;
+}
+
+.feedback .image {
+	position: absolute;
+	height: 100%;
+}
+
+.feedback .text:after {
+	content: " ";
+	height: 0;
+	clear: both;
+}
+
+.feedback .msg {
+	font-style: italic;
+	padding-bottom: 12px;
+}
+
+.feedback .msg:before {
+	content: "«";
+	font-size: 24px;
+	margin-right: 8px;
+	color: #efefef;
+	vertical-align: middle;
+    font-style: normal;
+    speak: none;
+}
+/*//// Media ////////////////////////////*/
+@media (max-width: 1290px) {
+.header .social {
+      display: none;
+    }
+}
+
+@media (max-width: 1180px) {
+  .header .desktop {
+    display: none;
+  }
+
+  .header .mobile {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+	.p50 {
+		width: 100%;
+	}
+
+	.p33 {
+		width: 100%;
+	}
+
+	.p25 {
+		width: 100%;
+	}
+
+	.p66 {
+		width: 100%;
+	}
+
+	.p75 {
+		width: 100%;
+	}
+
+	.header {
+		padding: 0;
+	}
+
+	.header .logo {
+		margin: 0;
+	}
+
+	.header ul {
+		margin: 0;
+	}
+
+	.wrapper {
+		padding-top: 80px;
+	}
+
+	.menu_mobile {
+		top: 80px;
+	}
+
+	h1 {
+		font-size: 60px;
+	}
+
+	.feedback .image {
+		position: relative;
+	}
+
+	.feedback .offset25 {
+		margin: 0;
+	}
+
+	.footer .copy {
+		display: none;
+	}
+}
