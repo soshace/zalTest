@@ -26,7 +26,7 @@ function PH_get_slider(){
             $col++;
             $valalbText = get_field( "albText" );
             $img= get_the_post_thumbnail( $post->ID, 'large' );
-            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "large" );
+            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ));
             if ($col == 1){
               $photoAlbTextblock .='<div class="section_line_lr conteiner">';
             }
