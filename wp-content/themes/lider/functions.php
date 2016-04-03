@@ -42,8 +42,12 @@ add_action('init', 'CL_register');
 
 $post = $wp_query->post;
 
- if (in_category('photo/фото2/')) {
+ if (in_category('photo/*/')) {
      include(TEMPLATEPATH.'/single-photo.php');
+ }
+
+ if (in_category('news/*/')) {
+     include(TEMPLATEPATH.'/single-news.php');
  }
 
 function wpbeginner_numeric_posts_nav() {

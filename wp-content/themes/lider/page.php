@@ -27,7 +27,7 @@
 
 						<div class="card_tb">
 							<div class="card_line_lr">
-								<h3><?php the_title(); ?></h3>
+								<a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
 								<p class="date"><?php echo get_the_date() ?></p>
 								<?php
 								if ( has_post_thumbnail() ) {

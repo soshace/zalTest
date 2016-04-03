@@ -29,7 +29,7 @@
         </div>
 		</section>
 
-		<section class="section_tb news newsLinks">
+		<section class="section_tb news newsLinks" id="news">
   			<div class="section_line_lr conteiner">
   				<h1>Новости</h1>
   			</div>
@@ -55,18 +55,20 @@
 				<?php
 				}?>
 				<div class="block_float_l p50">
-					<div class="card_b">
-						<?php if ( has_post_thumbnail()) {
-						   $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
-						   echo '<div class="card_line"> <img src="' . $large_image_url[0] . '" alt=""></div>';
-						 } ?>
-						<div class="card_line_lr card_line_tb">
-							<h4><?php the_title() ?></h4>
-							<p class="date"><?php the_date() ?></p>
-							<p><?php the_excerpt() ?></p>
-							<a class="read_more" href='<?php the_permalink() ?>'>Далее</a>
+					<a href='<?php the_permalink() ?>' class="card_b_Link">
+						<div class="card_b">
+							<?php if ( has_post_thumbnail()) {
+							   $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
+							   echo '<div class="card_line"> <img src="' . $large_image_url[0] . '" alt=""></div>';
+							 } ?>
+							<div class="card_line_lr card_line_tb">
+								<h4><?php the_title() ?></h4>
+								<p class="date"><?php the_date() ?></p>
+								<p><?php the_excerpt() ?></p>
+								<a class="read_more" href='<?php the_permalink() ?>'>Далее</a>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				<?php if ($col == 2){
 					$col = 0;
@@ -106,6 +108,7 @@
 	    $("#MenuButton").click(function(ev){
 	      $("#MobileMenu").slideToggle(300);
 	    });
+
 	  });
 	</script>
 </body>

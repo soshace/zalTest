@@ -8,6 +8,7 @@
     		<?php get_sidebar(); ?>
     		<section class="section_t">
     			<div class="conteiner section_line_lr">
+            <a href="/blog" class="back_link">Назад к статьям</a>
             <?php
         		// Start the loop.
         		while ( have_posts() ) : the_post(); ?>

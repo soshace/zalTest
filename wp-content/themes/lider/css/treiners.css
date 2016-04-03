@@ -61,6 +61,7 @@
 .treiners .card {
 	overflow: hidden;
 	position: relative;
+	min-height: 270px;
 }
 
 .treiners .image, .treiners .text {
