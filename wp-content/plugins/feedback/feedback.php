@@ -3,7 +3,7 @@
 /*
 Plugin Name: feedback
 Plugin URI:
-Description: A simple plugin for list of treiners
+Description: A simple plugin for list of feedback
 Author: Meline
 Version: 1.0
 Author URI: Your URL

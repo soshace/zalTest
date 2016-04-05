@@ -3,6 +3,10 @@
 	padding-top: 8px;
 }
 
+.card_b .card_line_tb{
+  min-height: 270px;
+}
+
 .photo .image_link {
 	margin: 0;
 	display: block;

@@ -9,31 +9,30 @@
     		<section class="section_t">
     			<div class="conteiner section_line_lr">
             <a href="/#news" class="back_link">Назад к новостям</a>
-            <?php
-        		// Start the loop.
-        		while ( have_posts() ) : the_post(); ?>
-                <h1><?php the_title(); ?></h1>
-                <?php if ( has_post_thumbnail() ) {
-                  $image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'  );
-                  $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), $size, $icon ); ?>
-
-                  <img src='<?php echo $image_url[0] ?>' alt="">
+            <div class="card_b">
+              <div class="card_line_lr">
                 <?php
-                }
-                ?>
+            		// Start the loop.
+            		while ( have_posts() ) : the_post(); ?>
+                    <h1><?php the_title(); ?></h1>
+                    <?php if ( has_post_thumbnail() ) {
+                      $image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'  );
+                      $image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), $size, $icon ); ?>
+
+                      <img src='<?php echo $image_url[0] ?>' alt="">
+                    <?php
+                    }
+                    ?>
 
 
 
-                <?php the_content(); ?>
-            <?php endwhile; ?>
+                    <?php the_content(); ?>
+                <?php endwhile; ?>
+                </div>
+              </div>
     			</div>
     		</section>
-    		<section class="section_b">
-    			<!-- <div class="conteiner section_line_lr">
-    				<input placeholder="Input" type="text">
-    				<button>Button</button>
-    			</div> -->
-    		</section>
+    		<section class="section_b"></section>
       </div>
       <?php get_footer(); ?>
 	<script type="text/javascript">

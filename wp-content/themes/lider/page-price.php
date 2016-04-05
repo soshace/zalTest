@@ -9,7 +9,7 @@
         <section class="price section_tb">
     			<div class="section_line_lr conteiner">
     				<h1>Прейскурант</h1>
-    				<p>Мы предоставляем скидки: студентам, школьникам и семьям (от 2-х человек). <br>Подробнее можно узнать по тел.: 7-27-47.</p>
+            <?php the_excerpt(); ?>
     			</div>
           <?php echo do_shortcode("[PR_slider]"); ?>
         </section>

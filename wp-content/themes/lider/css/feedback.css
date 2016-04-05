@@ -24,6 +24,7 @@
 .feedback .msg {
 	font-style: italic;
 	padding-bottom: 12px;
+	white-space: pre-line;
 }
 
 .feedback .msg:before {

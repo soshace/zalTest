@@ -31,10 +31,6 @@ function NEWS_slider(){
     print NEWS_get_slider();
 }
 
-?>
-
-
-<?php
 define('NI_NAME', "Новости");
 define('NI_SINGLE', "Новости");
 define('NI_TYPE', "news");

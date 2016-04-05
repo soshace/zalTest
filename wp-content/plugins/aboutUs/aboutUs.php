@@ -26,7 +26,6 @@ function AU_get_slider(){
                 <a class="link_button" href="/about">О центре</a>';
 
         endwhile; endif; wp_reset_query();
-// <div class="aboutUsT">' . get_the_content() .'</div>
         $aboutUsTextblock.= '';
 
         return $aboutUsTextblock;

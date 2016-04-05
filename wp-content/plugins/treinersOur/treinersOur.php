@@ -26,6 +26,7 @@ function TR_get_slider(){
             $valPhone = get_field( "phone" );
             $valSvk = get_field( "svk" );
             $valNapr = get_field( "napravl" );
+            $valPubl = get_field( "public" );
             $treinersOurTextblock .='
                   <div class="block_float_l p100">
                     <div class="card">
@@ -38,7 +39,7 @@ function TR_get_slider(){
                 $treinersOurTextblock.= '<p class="kredo">' . $valKredo .'</p>';
               };
 							$treinersOurTextblock.= '<p class="phone"> ' . $valPhone .'';
-              
+
               if ($valSvk){
                 $treinersOurTextblock.= '<a href="' . $valSvk .'" class="vk"></a>';
               };
