@@ -66,9 +66,6 @@ return $photoAlbTextblock;
 
 add_shortcode('PH_slider', 'PH_insert_slider');
 
-
-
-
 /**add template tag- for use in themes**/
 
 function PH_slider(){
