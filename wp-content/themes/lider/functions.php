@@ -207,7 +207,7 @@ case 'textarea':
         <br /><span class="description">'.$field['desc'].'</span>';
 break;
 case 'button':
-    echo '<button name="'.$field['id'].'" class="'.$field['id'].'" data-editor="content">Добавить фото</button>';
+    echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a>';
 break;
         }
         echo '</td></tr>';
