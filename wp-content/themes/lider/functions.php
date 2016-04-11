@@ -18,6 +18,27 @@ function page_excerpt() {
 }
 add_action('init', 'page_excerpt');
 
+define('Phn_NAME', "Телефоны");
+define('Phn_SINGLE', "Телефоны");
+define('Phn_TYPE', "phones");
+
+function Phn_register() {
+    $args = array(
+        'label' => __(Phn_NAME),
+        'singular_label' => __(Phn_SINGLE),
+        'public' => true,
+        'show_ui' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'rewrite' => true,
+        'supports' => array('title', 'editor', 'thumbnail')
+       );
+
+    register_post_type(Phn_TYPE , $args );
+}
+
+add_action('init', 'Phn_register');
+
 define('CLI_NAME', "Расписание");
 define('CLI_SINGLE', "Расписание");
 define('CLI_TYPE', "calendar");
@@ -93,6 +114,7 @@ function custom_menu_order($menu_ord) {
         'themes.php', // Внешний вид
         'upload.php', // Медиафайлы
         'edit.php?post_type=page', // Страницы
+        'edit.php?post_type=phones', // Телефоны
         'edit.php?post_type=aboutus', // aboutUs
         'edit.php?post_type=news', // Новости
         'edit.php?post_type=calendar', // календарь
@@ -130,6 +152,11 @@ $meta_fields = array(
         'desc'  => 'Добавьте описание',
         'id'    => 'mytextarea',  // даем идентификатор.
         'type'  => 'textarea'  // Указываем тип поля.
+    ),
+    array(
+        'label' => 'Добавить еще фото',
+        'id'    => 'mybutton',  // даем идентификатор.
+        'type'  => 'button'  // Указываем тип поля.
     )
 );
 
@@ -169,21 +196,30 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
         echo  '<div>
             <img data-src="' . $default . '" src="' . $src . '" width="115px" height="90px" />
             <div>
-              <input type="hidden" name="' . $name . '" id="' . $name . '" value="' . $value . '" />
+              <input type="hidden" name="' . $name . '" class="' . $name . '" value="' . $value . '" />
               <button type="submit" class="upload_image_button button">Загрузить</button>
               <button type="submit" class="remove_image_button button">&times;</button>
             </div>
           </div>';
 break;
 case 'textarea':
-    echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
+    echo '<textarea name="'.$field['id'].'" class="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
         <br /><span class="description">'.$field['desc'].'</span>';
+break;
+case 'button':
+    echo '<button name="'.$field['id'].'" class="'.$field['id'].'" data-editor="content">Добавить фото</button>';
 break;
         }
         echo '</td></tr>';
     }
     echo '</table>';
 }
+
+// if(isset($_POST['mybutton']))
+// {
+//     echo "hey";
+// }
+
 
 // Пишем функцию для сохранения
 function save_my_meta_fields($post_id) {

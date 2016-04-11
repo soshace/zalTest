@@ -33,7 +33,7 @@
 	border: none;
 }
 
-.head_slider .title_phone {
+.head_slider .title_phone h4{
 	position: relative;
 	display: inline-block;
 	font-size: 36px;

@@ -274,7 +274,16 @@ button:hover, .link_button:hover {
 	display: inline;
 }
 
-/*!!!*/
+.newsCard .card_line{ overflow: hidden; }
+.newsCard .card_line img{
+	min-height: 456px;
+	width: auto;
+  margin: 0 auto;
+}
+
+.newsCard{
+	min-height: 700px;
+}
 
 .footer .vk,
 .footer .fb,

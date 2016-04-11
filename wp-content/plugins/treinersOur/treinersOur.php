@@ -27,29 +27,32 @@ function TR_get_slider(){
             $valSvk = get_field( "svk" );
             $valNapr = get_field( "napravl" );
             $valPubl = get_field( "public" );
-            $treinersOurTextblock .='
-                  <div class="block_float_l p100">
-                    <div class="card">
-                      <div class="p25 image">
-                        <img src="'. $thumbnail_src[0] .'" alt="">
-                      </div>
-          						<div class="offset25 p75 text card_line_lr card_line_tb">
-          							<h4>' .get_the_title() .'</h4>';
-              if ($valKredo){
-                $treinersOurTextblock.= '<p class="kredo">' . $valKredo .'</p>';
-              };
-							$treinersOurTextblock.= '<p class="phone"> ' . $valPhone .'';
+            if ($valPubl == 'Да'){
+              $treinersOurTextblock .='
+                    <div class="block_float_l p100">
+                      <div class="card">
+                        <div class="p25 image">
+                          <img src="'. $thumbnail_src[0] .'" alt="">
+                        </div>
+            						<div class="offset25 p75 text card_line_lr card_line_tb">
+            							<h4>' .get_the_title() .'</h4>';
+                if ($valKredo){
+                  $treinersOurTextblock.= '<p class="kredo">' . $valKredo .'</p>';
+                };
+  							$treinersOurTextblock.= '<p class="phone"> ' . $valPhone .'';
 
-              if ($valSvk){
-                $treinersOurTextblock.= '<a href="' . $valSvk .'" class="vk"></a>';
-              };
+                if ($valSvk){
+                  $treinersOurTextblock.= '<a href="' . $valSvk .'" class="vk"></a>';
+                };
 
-              $treinersOurTextblock.= '</p><p class="description">' . get_the_content() .'</p>';
+                $treinersOurTextblock.= '</p><p class="description">' . get_the_content() .'</p>';
 
-              if ($valNapr){
-                $treinersOurTextblock.= '<p class="direction">Направления:  ' . $valNapr .'</p>';
-              };
-              $treinersOurTextblock.= '</div></div></div>';
+                if ($valNapr){
+                  $treinersOurTextblock.= '<p class="direction">Направления:  ' . $valNapr .'</p>';
+                };
+                $treinersOurTextblock.= '</div></div></div>';
+            }
+
 
         endwhile; endif; wp_reset_query();
         $treinersOurTextblock.= '</div>';

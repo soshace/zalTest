@@ -15,10 +15,26 @@
 					<img class="parralax_layer2" src="<?php bloginfo('template_url'); ?>/img/1.png" alt="The Last of us">
 				</div>
 				<div class="block_float_l p33">
-					<div class="conteiner">
+					<div class="conteiner title_phone">
 						<h1>Центр культуры тела "Лидер"</h1>
 						<hr>
-						<h4 class="title_phone">+7 (921) 318-25-20, </br> 7-27-47</h4>
+							<?php
+								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+								$args = array(
+									'post_type' => 'phones',
+									'paged' => $paged,
+									'has_archive' => true
+								);
+								query_posts($args);
+
+
+								if (have_posts()) :
+
+									while (have_posts()) : the_post();
+										the_content();
+									endwhile;
+					      endif;
+							?>
 					</div>
 				</div>
 			</div>
@@ -56,15 +72,15 @@
 				}?>
 				<div class="block_float_l p50">
 					<a href='<?php the_permalink() ?>' class="card_b_Link">
-						<div class="card_b">
+						<div class="card_b newsCard">
 							<?php if ( has_post_thumbnail()) {
-							   $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');
+							   $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
 							   echo '<div class="card_line"> <img src="' . $large_image_url[0] . '" alt=""></div>';
 							 } ?>
 							<div class="card_line_lr card_line_tb">
 								<h4><?php the_title() ?></h4>
 								<p class="date"><?php the_date() ?></p>
-								<p><?php the_excerpt() ?></p>
+								<?php the_excerpt() ?>
 								<a class="read_more" href='<?php the_permalink() ?>'>Далее</a>
 							</div>
 						</div>

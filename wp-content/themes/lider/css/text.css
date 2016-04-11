@@ -6,6 +6,18 @@ p img {
     width: auto !important;
     float: left;
 }
+
+.aboutLine > div:nth-child(2){
+  max-width: 300px;
+  float: left;
+  padding-right: 16px;
+}
+
+.aboutLine > div:nth-child(2) img{
+  height: auto;
+  padding-bottom: 16px;
+}
+
 /*//// Media ////////////////////////////*/
 @media (max-width: 1290px) {
 .header .social {
@@ -70,5 +82,11 @@ p img {
 
   .footer .copy {
   	display: none;
+  }
+
+  .aboutLine > div:nth-child(2) {
+    max-width: 100%;
+    float: left;
+    padding-right: 0;
   }
 }

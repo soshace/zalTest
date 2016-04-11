@@ -6,7 +6,7 @@
     		<section class="section_tb info">
     			<div class="conteiner section_line_lr">
             <div class="card_b">
-              <div class="card_line_lr">
+              <div class="card_line_lr aboutLine">
                 <?php
             		// Start the loop.
             		while ( have_posts() ) : the_post();
