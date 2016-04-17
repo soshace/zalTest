@@ -10,10 +10,7 @@
 </section>
 <script type="text/javascript">
   $( document ).ready(function() {
-    $('.header .current-menu-item a').click(function(e){
-      e.preventDefault();
-      return false;
-    });
+
     if(!($('li').is('.current-menu-item'))){
       var windLocat = window.location.pathname;
       if (windLocat != '/'){
@@ -29,6 +26,11 @@
       }
 
     }
+
+    $('.header .current-menu-item > a').click(function(e){
+      e.preventDefault();
+      return false;
+    });
 
     var oldLinkprev = $('li.prev a').attr('href');
     var oldLinknext = $('li.next a').attr('href');

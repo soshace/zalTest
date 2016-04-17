@@ -48,58 +48,6 @@
     margin-left: -25px;
 }
 
-.pagination .prev a, .pagination .next a {
-  width: 32px;
-  height: 32px;
-  padding: 12px;
-  font-family: "Icon_Set";
-  font-size: 16px;
-  vertical-align: middle;
-  line-height: 1;
-    font-style: normal;
-    speak: none;
-    color: #000;
-  border: #000 1px solid;
-}
-
-.pagination .conteiner {
-  padding: 0 16px;
-}
-
-.pagination .prev a:hover, .pagination .next a:hover {
-  color: #ed3237;
-  border: #ed3237 1px solid;
-}
-
-.pagination {
-  margin-bottom: 24px;
-}
-
-.pagination ul {
-  margin: 0;
-  padding: 0;
-}
-
-.pagination li {
-  margin: 0;
-  display: inline;
-}
-
-.pagination .prev {
-  float: left;
-}
-
-.pagination .next {
-  float: right;
-}
-
-.pagination .next a:before {
-  content: "\e81a";
-}
-
-.pagination .prev a:before {
-  content: "\e819";
-}
 
 
 /*//// Media ////////////////////////////*/
