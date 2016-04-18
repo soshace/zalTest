@@ -17,7 +17,7 @@
                   $col = 0;
                   ?>
 
-                  <section class="section_t calendar"><div class="section_line_lr">
+                  <section class="section_t calendar calendarXL"><div class="section_line_lr">
                           <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
                         </div>
                         <div class="conteiner section_line_lr calendar_line_lr">
@@ -210,7 +210,9 @@
           </div>
                   </div></section>
 
-                  <section class="calendar section_tb">
+                  <section class="calendar section_tb calendarSM">
+                    <div class="section_line_lr">
+
 
           <?php
 
@@ -218,7 +220,6 @@
 
 
                     while (have_posts()) : the_post();
-                      $col++;
                       global $wpdb;
                       $idDay = get_the_ID();
                       $val6 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='6:00'");
@@ -257,11 +258,6 @@
                       $selLineCLCount22 = count($val22);
                       $val23 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='23:00'");
                       $selLineCLCount23 = count($val23);
-
-                      if ($col == 1){ ?>
-                        <div class="section_line_lr">';
-                      <?php
-                      }
 
                       ?>
                       <div class="block_float_l p33"><div class="card_t">
@@ -470,23 +466,13 @@
                       ?>
 
                       </ul></div></div>
-
-                      <?php if ($col == 3){ ?>
-                          </div>
-                      <?php $col=0;
-                      };
-
+                      <?php
                     endwhile;
                   endif;
 
-
-
-                    wpbeginner_numeric_posts_nav();
-
-                    wp_reset_query();
-                    wp_reset_postdata();
-
             ?>
+          </div>
+
         </section>
       </div>
       <?php get_footer(); ?>

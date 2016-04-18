@@ -74,6 +74,14 @@
   padding: 32px 0;
 }
 
+.calendarSM{
+  display: none;
+}
+
+.calendarXL{
+  margin-bottom: 48px;
+}
+
 /*//// Media ////////////////////////////*/
 @media (max-width: 1290px) {
   .header .social {
@@ -92,6 +100,14 @@
 
   .p33{
     width: 50%;
+  }
+
+  .calendarXL{
+    display: none;
+  }
+
+  .calendarSM{
+    display: block;
   }
 }
 
@@ -142,5 +158,9 @@
 
   .footer .copy {
   	display: none;
+  }
+
+  .card_t {
+      min-height: 0;
   }
 }
