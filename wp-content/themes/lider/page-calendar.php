@@ -3,15 +3,11 @@
 
 <?php get_header(); ?>
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/calendar.css"/>
+    <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/calendar_print_2.css"/>
     <body <?php body_class(); ?> >
     	<div class="wrapper">
     		<?php get_sidebar(); ?>
-        <section class="calendar section_tb">
-            <div class="section_line_lr">
-                <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
-            </div>
             <?php
-            function CL_get_slider(){
 
                   $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                   $args = array(
@@ -19,155 +15,465 @@
                   );
                   query_posts($args);
                   $col = 0;
+                  ?>
 
+                  <section class="section_t calendar"><div class="section_line_lr">
+                          <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
+                        </div>
+                        <div class="conteiner section_line_lr calendar_line_lr">
+                        <div class="card_b">
+
+                        <table cellspacing="0" cellpadding="0">
+                            <tbody><tr>
+                                <td rowspan="2" &nbsp;<="" td="">
+                                </td><td colspan="7"><h2>Расписание занятий</h2></td>
+                            </tr>
+                            <tr>
+                                <td class="vertMid">Понедельник</td>
+                                <td class="vertMid">Вторник</td>
+                                <td class="vertMid">Среда</td>
+                                <td class="vertMid">Четверг</td>
+                                <td class="vertMid">Пятница</td>
+                                <td class="vertMid">Суббота</td>
+                                <td class="vertMid">Воскресенье</td>
+                            </tr>
+                            <?php
+                  if (have_posts()) :
+                    for ($timeTable=6; $timeTable <=23 ; $timeTable++) {
+                      global $wpdb;
+                      $timeTableText = $timeTable .':00';
+
+                      $valN = $wpdb->get_results("SELECT * FROM wp_calendar WHERE item_time = '$timeTableText'");
+                      // var_dump($valN);
+                      $selLineCLCountN = count($valN);
+                        if ($selLineCLCountN != 0){
+                          ?>
+                          <tr><td class="vertMid"><b><?php echo $timeTableText ?></b></td>
+                            <td>
+                                <ul>
+                          <?php
+                          for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+                            // echo $timeTableText;
+                            $trenerIDuse = $valN[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            $idday = $valN[$iCLV]->itemday;
+                            $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                            if ($idday->post_title == 'Понедельник'){
+                              ?>
+                                  <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                    <?php echo $valN[$iCLV]->item_content ?>
+                                  </li>
+                              <?php
+                              }
+                            }
+
+                            ?>
+                                  </ul>
+                              </td>
+                              <td>
+                                  <ul>
+                            <?php
+                            for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                              $trenerIDuse = $valN[$iCLV]->item_treiner;
+                              $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                              $idday = $valN[$iCLV]->itemday;
+                              $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                              if ($idday->post_title == 'Вторник'){
+                                ?>
+                                    <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                      <?php echo $valN[$iCLV]->item_content ?>
+                                    </li>
+                                <?php
+                                }
+                              }
+
+                              ?>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                              <?php
+                              for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                                $trenerIDuse = $valN[$iCLV]->item_treiner;
+                                $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                                $idday = $valN[$iCLV]->itemday;
+                                $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                                if ($idday->post_title == 'Среда'){
+                                  ?>
+                                      <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                        <?php echo $valN[$iCLV]->item_content ?>
+                                      </li>
+                                  <?php
+                                  }
+                                }
+
+                                ?>
+                                      </ul>
+                                  </td>
+                                  <td>
+                                      <ul>
+                                <?php
+                                for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                                  $trenerIDuse = $valN[$iCLV]->item_treiner;
+                                  $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                                  $idday = $valN[$iCLV]->itemday;
+                                  $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                                  if ($idday->post_title == 'Четверг'){
+                                    ?>
+                                        <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                          <?php echo $valN[$iCLV]->item_content ?>
+                                        </li>
+                                    <?php
+                                    }
+                                  }
+
+                                  ?>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                  <?php
+                                  for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                                    $trenerIDuse = $valN[$iCLV]->item_treiner;
+                                    $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                                    $idday = $valN[$iCLV]->itemday;
+                                    $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                                    if ($idday->post_title == 'Пятница'){
+                                      ?>
+                                          <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                            <?php echo $valN[$iCLV]->item_content ?>
+                                          </li>
+                                      <?php
+                                      }
+                                    }
+
+                                    ?>
+                                          </ul>
+                                      </td>
+                                      <td>
+                                          <ul>
+                                    <?php
+                                    for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                                      $trenerIDuse = $valN[$iCLV]->item_treiner;
+                                      $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                                      $idday = $valN[$iCLV]->itemday;
+                                      $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                                      if ($idday->post_title == 'Суббота'){
+                                        ?>
+                                            <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                              <?php echo $valN[$iCLV]->item_content ?>
+                                            </li>
+                                        <?php
+                                        }
+                                      }
+
+                                      ?>
+                                            </ul>
+                                        </td>
+                                        <td>
+                                            <ul>
+                                      <?php
+                                      for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
+
+                                        $trenerIDuse = $valN[$iCLV]->item_treiner;
+                                        $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                                        $idday = $valN[$iCLV]->itemday;
+                                        $idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+                                        if ($idday->post_title == 'Воскресенье'){
+                                          ?>
+                                              <li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+                                                <?php echo $valN[$iCLV]->item_content ?>
+                                              </li>
+                                          <?php
+                                          }
+                                        }
+
+                                        ?>
+                                              </ul>
+                                          </td>
+
+                            </tr>
+                            <?php
+                        }
+                        }
+                      endif;
+
+                      ?>
+
+                  </tbody>
+          </table>
+          </div>
+                  </div></section>
+
+                  <section class="calendar section_tb">
+
+          <?php
 
                   if (have_posts()) :
 
 
                     while (have_posts()) : the_post();
-                      $val10 = get_field( "t10" );
-                      $val10C = get_field( "10:00color" );
-                      $val11 = get_field( "11:00" );
-                      $val11C = get_field( "11:00color" );
-                      $val12 = get_field( "12:00" );
-                      $val12C = get_field( "12:00color" );
-                      $val15 = get_field( "15:00" );
-                      $val15C = get_field( "15:00color" );
-                      $val16 = get_field( "16:00" );
-                      $val16C = get_field( "16:00color" );
-                      $val17 = get_field( "17:00" );
-                      $val17C = get_field( "17:00color" );
-                      $val17_1 = get_field( "17:00(1)" );
-                      $val17C_1 = get_field( "17:00(1)color" );
-                      $val18 = get_field( "18:00" );
-                      $val18C = get_field( "18:00color" );
-                      $val18_1 = get_field( "18:00(1)" );
-                      $val18C_1 = get_field( "18:00(1)color" );
-                      $val19 = get_field( "19:00" );
-                      $val19C = get_field( "19:00color" );
-                      $val19_1 = get_field( "19:00(1)" );
-                      $val19C_1 = get_field( "19:00(1)color" );
-                      $val19_2 = get_field( "19:00(2)" );
-                      $val19_2C = get_field( "19:00(2)color" );
-                      $val20 = get_field( "20:00" );
-                      $val20C = get_field( "20:00color" );
-                      $val20_1 = get_field( "20:00(1)" );
-                      $val20C_1 = get_field( "20:00(1)color" );
-                      $val20_2 = get_field( "20:00(2)" );
-                      $val20_2C = get_field( "20:00(2)color" );
-                      $val21 = get_field( "21:00" );
-                      $val21C = get_field( "21:00color" );
                       $col++;
+                      global $wpdb;
+                      $idDay = get_the_ID();
+                      $val6 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='6:00'");
+                      $selLineCLCount6 = count($val6);
+                      $val7 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='7:00'");
+                      $selLineCLCount7 = count($val7);
+                      $val8 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='8:00'");
+                      $selLineCLCount8 = count($val8);
+                      $val9 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='9:00'");
+                      $selLineCLCount9 = count($val9);
+                      $val10 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='10:00'");
+                      $selLineCLCount10 = count($val10);
+                      $val11 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='11:00'");
+                      $selLineCLCount11 = count($val11);
+                      $val12 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='12:00'");
+                      $selLineCLCount12 = count($val12);
+                      $val13 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='13:00'");
+                      $selLineCLCount13 = count($val13);
+                      $val14 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='14:00'");
+                      $selLineCLCount14 = count($val14);
+                      $val15 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='15:00'");
+                      $selLineCLCount15 = count($val15);
+                      $val16 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='16:00'");
+                      $selLineCLCount16 = count($val16);
+                      $val17 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='17:00'");
+                      $selLineCLCount17 = count($val17);
+                      $val18 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='18:00'");
+                      $selLineCLCount18 = count($val18);
+                      $val19 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='19:00'");
+                      $selLineCLCount19 = count($val19);
+                      $val20 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='20:00'");
+                      $selLineCLCount20 = count($val20);
+                      $val21 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='21:00'");
+                      $selLineCLCount21 = count($val21);
+                      $val22 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='22:00'");
+                      $selLineCLCount22 = count($val22);
+                      $val23 = $wpdb->get_results("SELECT * FROM wp_calendar WHERE itemday= $idDay AND item_time='23:00'");
+                      $selLineCLCount23 = count($val23);
 
-                      if ($col == 1){
-                        $calendblock .='<div class="section_line_lr">';
+                      if ($col == 1){ ?>
+                        <div class="section_line_lr">';
+                      <?php
                       }
 
-                      $calendblock .='<div class="block_float_l p33"><div class="card_t">
+                      ?>
+                      <div class="block_float_l p33"><div class="card_t">
                           <div class="card_line_lr card_line_tb">
-                              <h4>' .get_the_title() .'</h4></div><ul class="card_line_lr">';
-                      if ($val10){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val10C .'" class="marker"></span>
-                          <span class="time">10:00</span>
-                          <p class="description">' . $val10 .'</p></li>';
+                              <h4><?php the_title(); ?></h4></div><ul class="card_line_lr">
+                      <?php
+
+                      if ($selLineCLCount6 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount6; $iCLV++) {
+                            $trenerIDuse = $val6[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">6:00</span>
+                            <p class="description"><?php echo $val6[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
                       };
-                      if ($val11){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val11C .'" class="marker"></span>
+                      if ($selLineCLCount7 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount7; $iCLV++) {
+                            $trenerIDuse = $val7[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">7:00</span>
+                            <p class="description"><?php echo $val7[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
+                      };
+                      if ($selLineCLCount8 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount8; $iCLV++) {
+                            $trenerIDuse = $val8[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">8:00</span>
+                            <p class="description"><?php echo $val8[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
+                      };
+                      if ($selLineCLCount9 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount9; $iCLV++) {
+                            $trenerIDuse = $val9[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">9:00</span>
+                            <p class="description"><?php echo $val9[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
+                      };
+                      if ($selLineCLCount10 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount10; $iCLV++) {
+                            $trenerIDuse = $val10[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">10:00</span>
+                            <p class="description"><?php echo $val10[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
+                      };
+                      if ($selLineCLCount11 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount11; $iCLV++) {
+                          $trenerIDuse = $val11[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
                           <span class="time">11:00</span>
-                          <p class="description">' . $val11 .'</p></li>';
+                          <p class="description"><?php echo $val11[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val12){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val12C .'" class="marker"></span>
+                      if ($selLineCLCount12 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount12; $iCLV++) {
+                          $trenerIDuse = $val12[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
                           <span class="time">12:00</span>
-                          <p class="description">' . $val12 .'</p></li>';
+                          <p class="description"><?php echo $val12[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val15){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val15C .'" class="marker"></span>
+                      if ($selLineCLCount13 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount13; $iCLV++) {
+                          $trenerIDuse = $val13[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">13:00</span>
+                          <p class="description"><?php echo $val13[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
+                      };
+                      if ($selLineCLCount14 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount14; $iCLV++) {
+                          $trenerIDuse = $val14[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">14:00</span>
+                          <p class="description"><?php echo $val14[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
+                      };
+                      if ($selLineCLCount15 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount15; $iCLV++) {
+                          $trenerIDuse = $val15[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
                           <span class="time">15:00</span>
-                          <p class="description">' . $val15 .'</p></li>';
+                          <p class="description"><?php echo $val15[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val16){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val16C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val16 .'</p></li>';
+                      if ($selLineCLCount16 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount16; $iCLV++) {
+                          $trenerIDuse = $val16[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">16:00</span>
+                          <p class="description"><?php echo $val16[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val17){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val17C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val17 .'</p></li>';
+                      if ($selLineCLCount17 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount17; $iCLV++) {
+                          $trenerIDuse = $val17[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">17:00</span>
+                          <p class="description"><?php echo $val17[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val17_1){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val17C_1 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val17_1 .'</p></li>';
+                      if ($selLineCLCount18 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount18; $iCLV++) {
+                          $trenerIDuse = $val18[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">18:00</span>
+                          <p class="description"><?php echo $val18[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val18){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val18C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val18 .'</p></li>';
+                      if ($selLineCLCount19 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount19; $iCLV++) {
+                          $trenerIDuse = $val19[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">19:00</span>
+                          <p class="description"><?php echo $val19[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val18_1){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val18C_1 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val18_1 .'</p></li>';
+                      if ($selLineCLCount20 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount20; $iCLV++) {
+                          $trenerIDuse = $val20[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">20:00</span>
+                          <p class="description"><?php echo $val20[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val19){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val19C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val19 .'</p></li>';
+                      if ($selLineCLCount21 != 0){
+                        for ($iCLV=0; $iCLV < $selLineCLCount21; $iCLV++) {
+                          $trenerIDuse = $val21[$iCLV]->item_treiner;
+                          $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                          ?>
+                          <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                          <span class="time">21:00</span>
+                          <p class="description"><?php echo $val21[$iCLV]->item_content ?></p></li>
+                          <?php
+                        }
                       };
-                      if ($val19_1){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val19C_1 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val19_1 .'</p></li>';
+                      if ($selLineCLCount22 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount22; $iCLV++) {
+                            $trenerIDuse = $val22[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">22:00</span>
+                            <p class="description"><?php echo $val22[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
                       };
-                      if ($val19_2){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val19C_2 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val19_2 .'</p></li>';
+                      if ($selLineCLCount23 != 0){
+                          for ($iCLV=0; $iCLV < $selLineCLCount23; $iCLV++) {
+                            $trenerIDuse = $val23[$iCLV]->item_treiner;
+                            $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
+                            ?>
+                            <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
+                            <span class="time">23:00</span>
+                            <p class="description"><?php echo $val23[$iCLV]->item_content ?></p></li>
+                            <?php
+                          }
                       };
-                      if ($val20){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val20C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val20 .'</p></li>';
-                      };
-                      if ($val20_1){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val20C_1 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val20_1 .'</p></li>';
-                      };
-                      if ($val20_2){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val20C_2 .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val20_2 .'</p></li>';
-                      };
-                      if ($val21){
-                        $calendblock .='<li class="card_line_tb time_line">
-                          <span style="background: ' . $val21C .'" class="marker"></span>
-                          <span class="time">15:00</span>
-                          <p class="description">' . $val21 .'</p></li>';
-                      };
+                      ?>
 
-                      $calendblock .='</ul></div></div>';
+                      </ul></div></div>
 
-                      if ($col == 3){
-                        $calendblock .='</div>';
-                        $col=0;
+                      <?php if ($col == 3){ ?>
+                          </div>
+                      <?php $col=0;
                       };
 
                     endwhile;
@@ -180,29 +486,7 @@
                     wp_reset_query();
                     wp_reset_postdata();
 
-                    return $calendblock;
-
-            }
-
-            function CL_insert_slider($atts, $content=null){
-
-              $calendblock= CL_get_slider();
-
-              return $calendblock;
-
-              }
-
-              add_shortcode('CL_slider', 'CL_insert_slider');
-
-              /**add template tag- for use in themes**/
-
-              function CL_slider(){
-
-                  print CL_get_slider();
-              }
-
             ?>
-            <?php echo do_shortcode("[CL_slider]"); ?>
         </section>
       </div>
       <?php get_footer(); ?>

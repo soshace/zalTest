@@ -24,11 +24,12 @@
                 <?php if ( $attachments ) {
                    foreach ( $attachments as $attachment ) {?>
                      <?php $image_attributes = wp_get_attachment_image_src( $attachment->ID );
-                        $image = wp_get_attachment_image_src( $attachment->ID, 'large' ); ?>
+                        $image = wp_get_attachment_image_src( $attachment->ID, 'large' );
+                        $sel = $wpdb->get_row("SELECT post_content FROM wp_posts WHERE post_title = $attachment->ID AND post_parent = $post->ID ");?>
                      <div class="block_float_l p33">
                					<div class="card">
                						<img class="img_mobile" src="<?php echo $image_attributes[0]; ?>" alt="">
-               						<a href="<?php echo $image[0]; ?>" rel="group" class="gallery">
+               						<a href="<?php echo $image[0]; ?>" rel="group" class="gallery" title="<?php echo $sel->post_content ?>">
                							<div class="cover"></div>
                							<img src="<?php echo $image_attributes[0]; ?>" alt="">
                						</a>

@@ -23,21 +23,30 @@ function PR_get_slider(){
             $valAnotation = get_field( "anotation" );
             $valrazTr = get_field( "razTr" );
             $valrazTr = get_field( "tr10" );
+            $valdescPr = get_field( "descPr" );
             $priceDivTextblock .='
                   <div class="block_float_l p50">
                     <div class="card_tb">
                       <div class="card_line_tb card_line_lr">
-                        <h4>' .get_the_title() .'</h4> <p>' . get_the_content() .'</p>';
+                        <h4>' .get_the_title() .'</h4>';
+            if ($valdescPr){
+              $priceDivTextblock.= '<p>' . $valdescPr .'</p>';
+            };
+            $priceDivTextblock .='' . get_the_content() .'';
 
               if ($valAnotation){
                 $priceDivTextblock.= '<p class="annotation">' . $valAnotation .'</p>';
               };
-							$priceDivTextblock.= '</div> <div class="card_line_tb card_line_lr">
-                                      <ul>
-                                        <li>Разовая тренировка: <span>' . $valrazTr .'</span></li>
-                                        <li>10 тренировок: <span>' . $valrazTr .'</span></li>
-                                      </ul>
-                                    </div>';
+              $priceDivTextblock .='</div>';
+
+              if($valrazTr & $valrazTr){
+                $priceDivTextblock.= '<div class="card_line_tb card_line_lr">
+                                        <ul>
+                                          <li>Разовая тренировка: <span>' . $valrazTr .'</span></li>
+                                          <li>10 тренировок: <span>' . $valrazTr .'</span></li>
+                                        </ul>
+                                      </div>';
+              }
               $priceDivTextblock.= '</div></div>';
 
         endwhile; endif; wp_reset_query();

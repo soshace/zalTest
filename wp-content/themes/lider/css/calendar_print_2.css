@@ -7,6 +7,14 @@ table {
 	margin: auto;
 }
 
+table td{
+	vertical-align: top;
+}
+
+table td.vertMid{
+	vertical-align: middle;
+}
+
 body{
     padding: 8px 0;
 }

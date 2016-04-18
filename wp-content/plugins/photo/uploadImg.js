@@ -16,7 +16,6 @@ jQuery(function($){
 	});
 	/*
 	 * удаляем значение произвольного поля
-	 * если быть точным, то мы просто удаляем value у input type='hidden'
 	 */
    $('.remove_image_button').click(function(){
 		var r = confirm('Уверены?');
@@ -56,8 +55,7 @@ jQuery(function($){
 							},
 						type: "post",
 							success: function(data){
-								$('.imgUploadSrc').attr('src', '');
-								$('.myfileinp').val('');
+								location.reload();
 							}
 						});
 					}

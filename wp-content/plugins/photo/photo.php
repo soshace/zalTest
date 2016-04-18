@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: photo
+Plugin Name: photoMelLider
 Plugin URI:
 Description: A simple plugin for text about a company
 Author: Meline
@@ -37,12 +37,7 @@ $meta_fields = array(
         'id'    => 'mytextarea',  // даем идентификатор.
         'type'  => 'textarea'  // Указываем тип поля.
     ),
-    // array(
-    //     'label' => 'Дата',
-    //     'desc'  => 'Добавьте описание',
-    //     'id'    => 'mydate',  // даем идентификатор.
-    //     'type'  => 'date'  // Указываем тип поля.
-    // ),
+
     array(
         'label' => 'Добавить еще фото',
         'id'    => 'mybutton',  // даем идентификатор.
@@ -124,8 +119,8 @@ case 'button':
           },
         type: "post",
           success: function(data){
-            $(".photoTable input").attr("value", "" );
-            $(".imgUploadSrc").attr("src", "" );
+
+            location.reload();
           }
         });
         });
@@ -174,7 +169,10 @@ case 'button':
                 "metakeyTextOld": attachmDesc,
                 "fieldsKey": fieldsKey
               },
-            type: "post"
+            type: "post",
+              success: function(data){
+                location.reload();
+              }
             });
         });
 
@@ -183,7 +181,7 @@ case 'button':
 
     })
     </script>';
-    echo '<div class="attachmDiv" style="margin: 30px 0;">';
+    echo '<div class="attachmDiv">';
     global $wpdb;
     $attachments = get_attached_media( 'image', $post->ID ); if ( $attachments ) {
             foreach ( $attachments as $attachment ) {
@@ -191,10 +189,14 @@ case 'button':
                 // $attachmentDate = $attachment->post_date;
                 $sel = $wpdb->get_row("SELECT post_content FROM wp_posts WHERE post_title = $attachment->ID AND post_parent = $post->ID ");
                 $thumbimg = wp_get_attachment_link( $attachment->ID, 'thumbnail', true );
-                echo '<div class="attachmItem" style="overflow: hidden" id="'. $attachment->ID .'"><div style="overflow: hidden; float:left; width: 40%;">' . $thumbimg . '</div>
-                <div style="float:left; width: 50%; padding: 0 30px;"><p class="descAttach">'. $sel->post_content .'</p>
-                <a href="javascript:;" class="changePhoto acf-button" data-editor="content" >Изменить запись</a>
-                <a href="javascript:;" class="delListPhoto button" data-editor="content" >× Удалить запись</a></div></div>';
+                echo '<div class="attachmItem" id="'. $attachment->ID .'"><div class="l40">' . $thumbimg . '</div>';
+                if ($sel->post_content == ''){
+                  echo '<div class="l60"><p class="descAttach">У данного фото нет описания</p>';
+                } else{
+                  echo '<div class="l60"><p class="descAttach">'. $sel->post_content .'</p>';
+                }
+                echo '<a href="javascript:;" class="changePhoto acf-button" data-editor="content" >Изменить запись</a>
+                <a href="javascript:;" class="delListPhoto button" data-editor="content" >× Удалить</a></div></div>';
             }
 
         }
@@ -204,38 +206,6 @@ break;
     }
     echo '';
 }
-
-// Пишем функцию для сохранения
-function save_my_meta_fields($post_id) {
-    global $meta_fields;  // Массив с нашими полями
-
-    // проверяем наш проверочный код
-    if (!wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__)))
-        return $post_id;
-    // Проверяем авто-сохранение
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
-        return $post_id;
-    // Проверяем права доступа
-    if ('page' == $_POST['post_type']) {
-        if (!current_user_can('edit_page', $post_id))
-            return $post_id;
-        } elseif (!current_user_can('edit_post', $post_id)) {
-            return $post_id;
-    }
-
-    // Если все отлично, прогоняем массив через foreach
-    foreach ($meta_fields as $field) {
-        $old = get_post_meta($post_id, $field['id'], true); // Получаем старые данные (если они есть), для сверки
-        $new = $_POST[$field['id']];
-        if ($new && $new != $old) {  // Если данные новые
-            update_post_meta($post_id, $field['id'], $new); // Обновляем данные
-        } elseif ('' == $new && $old) {
-            delete_post_meta($post_id, $field['id'], $old); // Если данных нету, удаляем мету.
-        }
-    } // end foreach
-}
-add_action('save_post', 'save_my_meta_fields'); // Запускаем функцию сохранения
-
 
 add_action('wp_ajax_load_custom_field_data','load_custom_field_data');
 add_action('wp_ajax_nopriv_load_custom_field_data','load_custom_field_data');
@@ -270,7 +240,9 @@ function updateFieldsPhoto(){
   $metakeyTextOld= $_POST['metakeyTextOld'];
   $fieldsKey= $_POST['fieldsKey'];
 
-  if ($metakeyTextOld == ''){
+  echo $metakeyText;
+
+  if ($metakeyTextOld == 'У данного фото нет описания'){
     $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $postIDOld, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
   }else{
     $wpdb->update($wpdb->posts, array("post_content" => $metakeyText), array("post_content" => $metakeyTextOld), array("%s"), array("%s") );

@@ -1,10 +1,52 @@
 /*//// Price ////////////////////////////*/
-.price {
-	padding-bottom: 8px;
+table {
+  border: #000 1px solid;
+  font-family: "Roboto_Condensed";
+  font-size: 14px;
+  line-height: 18px;
+  margin: auto;
+  width: 100%;
+  border-spacing: 0;
 }
 
-.price .card_tb {
-	min-height: 300px;
+.p50{
+  width: 100%;
+}
+
+h2 {
+  font-family: "Roboto_Condensed";
+  text-transform: uppercase;
+  font-size: 24px
+}
+
+th, tr, td {
+  border: #000 1px solid;
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  height: 30px;
+  width: 60px;
+}
+
+td ul {
+  margin: 0;
+  padding: 0;
+}
+
+td ul li {
+  padding: 8px 0;
+  border-bottom: #000 2px solid;
+  list-style: none;
+}
+
+td ul li:last-child {
+  border-bottom: none;
+}
+
+.price {
+	padding-bottom: 8px;
 }
 
 .price ul {
