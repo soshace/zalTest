@@ -8,7 +8,7 @@
     		<?php get_sidebar(); ?>
     		<section class="section_t">
     			<div class="conteiner section_line_lr">
-            <a href="/blog" class="back_link">Назад к статьям</a>
+            <a href="/blog" class="back_link backHistory">Назад к статьям</a>
             <div class="card_b">
               <div class="card_line_lr">
                   <?php

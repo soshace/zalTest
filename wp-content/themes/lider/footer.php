@@ -32,12 +32,19 @@
       return false;
     });
 
-    var oldLinkprev = $('li.prev a').attr('href');
-    var oldLinknext = $('li.next a').attr('href');
+    $('.backHistory').click(function(e){
+      if(history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    });
+
+    var oldLinkprev = $('.newsLinks li.prev a').attr('href');
+    var oldLinknext = $('.newsLinks li.next a').attr('href');
     var newLinkprev = oldLinkprev + '#news';
     var newLinknext = oldLinknext + '#news';
-    $('li.prev a').attr('href', newLinkprev);
-    $('li.next a').attr('href', newLinknext);
+    $('.newsLinks li.prev a').attr('href', newLinkprev);
+    $('.newsLinks li.next a').attr('href', newLinknext);
 
   });
 </script>
