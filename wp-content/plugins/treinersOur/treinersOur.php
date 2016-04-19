@@ -31,9 +31,11 @@ function TR_get_slider(){
               $treinersOurTextblock .='
                     <div class="block_float_l p100">
                       <div class="card">
-                        <div class="p25 image">
-                          <img src="'. $thumbnail_src[0] .'" alt="">
-                        </div>
+                        <div class="p25 image">';
+                        if ( $thumbnail_src[0]) {
+                           $treinersOurTextblock .='<img src="'. $thumbnail_src[0] .'" alt="">';
+                         }
+                $treinersOurTextblock .=' </div>
             						<div class="offset25 p75 text card_line_lr card_line_tb">
             							<h4>' .get_the_title() .'</h4>';
                 if ($valKredo){
