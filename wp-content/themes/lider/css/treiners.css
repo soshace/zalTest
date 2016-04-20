@@ -1,10 +1,9 @@
 /*//// Treiners ////////////////////////////*/
 .treiners .kredo {
 	font-style: italic;
-	font-size: 16px;
+	font-size: 12px;
 	border-bottom: #efefef 1px solid;
 	padding-bottom: 12px;
-	color: #a9a9a9;
 }
 
 .treiners .kredo:before {
@@ -18,7 +17,7 @@
 }
 
 .treiners .phone {
-	font-size: 16px;
+	font-size: 12px;
 	border-bottom: #efefef 1px solid;
 	padding-bottom: 12px;
 }
@@ -42,11 +41,13 @@
     font-style: normal;
     speak: none;
 	color: #000;
+	margin-right: 8px;
 }
 
 .treiners .vk {
 	float: right;
 	margin-top: -2px;
+	color: #000;
 }
 
 .treiners .vk:hover {
@@ -61,7 +62,7 @@
 .treiners .card {
 	overflow: hidden;
 	position: relative;
-	min-height: 270px;
+	min-height: 280px;
 }
 
 .treiners .image, .treiners .text {
@@ -72,6 +73,7 @@
 .treiners .image {
 	position: absolute;
 	height: 100%;
+	background: url(../img/user.png) no-repeat center;
 }
 
 .treiners .text:after {

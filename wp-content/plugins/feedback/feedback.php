@@ -59,10 +59,6 @@ function FB_slider(){
     print FB_get_slider();
 }
 
-?>
-
-
-<?php
 define('FI_NAME', "Отзывы");
 define('FI_SINGLE', "Отзывы");
 define('FI_TYPE', "feedback");

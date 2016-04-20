@@ -76,10 +76,6 @@ function PR_slider(){
     print PR_get_slider();
 }
 
-?>
-
-
-<?php
 define('PI_NAME', "Прайс");
 define('PI_SINGLE', "Прайс");
 define('PI_TYPE', "price");

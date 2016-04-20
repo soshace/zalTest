@@ -18,11 +18,10 @@
         var photoTrue = windLocat.indexOf('/photo/');
         if (photoTrue != '-1') {
           $('.menu-item-30').addClass('current-menu-item');
-        } else{
-          if (newsTrue == '-1') {
+        } else
+          if ((newsTrue == '-1') & (window.location.hash != '#news')) {
             $('.menu-item-36').addClass('current-menu-item');
           }
-        }
       }
 
     }

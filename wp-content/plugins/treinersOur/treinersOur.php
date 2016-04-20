@@ -44,7 +44,7 @@ function TR_get_slider(){
   							$treinersOurTextblock.= '<p class="phone"> ' . $valPhone .'';
 
                 if ($valSvk){
-                  $treinersOurTextblock.= '<a href="' . $valSvk .'" class="vk"></a>';
+                  $treinersOurTextblock.= '<a href="' . $valSvk .'" class="vk">Страница Вконтакте</a>';
                 };
 
                 $treinersOurTextblock.= '</p><p class="description">' . get_the_content() .'</p>';
@@ -83,10 +83,6 @@ function TR_slider(){
     print TR_get_slider();
 }
 
-?>
-
-
-<?php
 define('TI_NAME', "Тренеры");
 define('TI_SINGLE', "Тренеры");
 define('TI_TYPE', "treinersOur");

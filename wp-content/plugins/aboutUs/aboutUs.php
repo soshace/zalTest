@@ -52,10 +52,6 @@ function AU_slider(){
     print AU_get_slider();
 }
 
-?>
-
-
-<?php
 define('MI_NAME', "О центре");
 define('MI_SINGLE', "О центре");
 define('MI_TYPE', "aboutUs");
