@@ -21,9 +21,7 @@
 							<?php
 								$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 								$args = array(
-									'post_type' => 'phones',
-									'paged' => $paged,
-									'has_archive' => true
+									'post_type' => 'phones'
 								);
 								query_posts($args);
 
@@ -38,6 +36,7 @@
 									<?php
 									endwhile;
 					      endif;
+								wp_reset_query();
 							?>
 					</div>
 				</div>

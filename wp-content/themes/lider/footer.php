@@ -7,8 +7,7 @@
           $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
           $args = array(
             'post_type' => 'phones',
-            'paged' => $paged,
-            'has_archive' => true
+            'paged' => $paged
           );
           query_posts($args);
           if (have_posts()) :
@@ -19,6 +18,7 @@
             <?php
             endwhile;
           endif;
+          wp_reset_query();
           ?>
       </li>
     </ul>

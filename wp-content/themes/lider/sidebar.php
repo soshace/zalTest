@@ -7,13 +7,11 @@
 			<div class="text">
 
 				<?php
-					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-					$args = array(
+					$argsPhones = array(
 						'post_type' => 'phones',
-						'paged' => $paged,
-						'has_archive' => true
+						'paged' => $pagedPhones
 					);
-					query_posts($args);
+					query_posts($argsPhones);
 
 
 					if (have_posts()) :
@@ -33,6 +31,7 @@
 						</ul>
 						<?php
 						endwhile;
+						wp_reset_query();
 					endif;
 					?>
 
