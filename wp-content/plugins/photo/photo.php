@@ -72,7 +72,7 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
                     case 'text':
         echo  '<tr>
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
-                <td><div>
+                <td><div  class="uploadBox">
             <img data-src="' . $default . '" src="' . $src . '" width="115px" height="90px" class="imgUploadSrc" />
             <div>
               <input type="hidden" name="' . $field['id'] . '" class="' . $field['id'] . '" value="" />
@@ -128,6 +128,8 @@ case 'button':
         var attachmItem, attachmDesc;
 
         $(document).on("click", ".changePhoto", function(){
+          var uploadBox = $("#photobox .uploadBox");
+      		uploadBox.addClass("displayEverything");
           attachmItem = $(this).closest(".attachmItem");
           var attachmImg = attachmItem.find("img");
           attachmImg = attachmImg.attr("src");

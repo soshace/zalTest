@@ -3,7 +3,23 @@
     <p class="copy">&copy; 2015 – All rights reserved</p>
     <ul class="social">
       <li>
-        <a href="#" class="vk"></a>
+        <?php
+          $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+          $args = array(
+            'post_type' => 'phones',
+            'paged' => $paged,
+            'has_archive' => true
+          );
+          query_posts($args);
+          if (have_posts()) :
+            while (have_posts()) : the_post();
+            $vklider = get_field( "vklider" );
+            ?>
+              <a href="<?php echo $vklider ?>" class="vk"></a>
+            <?php
+            endwhile;
+          endif;
+          ?>
       </li>
     </ul>
   </div>

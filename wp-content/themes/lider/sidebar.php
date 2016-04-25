@@ -6,14 +6,36 @@
 			<a href="/" class="logo"></a>
 			<div class="text">
 
-				<p class="phone">+7 (921) 318-25-20 / 7-27-47</p>
-				<p class="description">Центр культуры тела "Лидер"</p>
-			</div>
-			<ul class="social">
-				<li>
-					<a href="#" class="vk"></a>
-				</li>
-			</ul>
+				<?php
+					$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+					$args = array(
+						'post_type' => 'phones',
+						'paged' => $paged,
+						'has_archive' => true
+					);
+					query_posts($args);
+
+
+					if (have_posts()) :
+
+						while (have_posts()) : the_post();
+						$mobPhone = get_field( "mobPhone" );
+						$workphone = get_field( "workphone" );
+						$vklider = get_field( "vklider" );
+						?>
+						<p class="phone"><?php echo $mobPhone ?> / <?php echo $workphone ?></p>
+						<p class="description">Центр культуры тела "Лидер"</p>
+						</div>
+						<ul class="social">
+							<li>
+								<a href="<?php echo $vklider ?>" class="vk"></a>
+							</li>
+						</ul>
+						<?php
+						endwhile;
+					endif;
+					?>
+
 			<?php wp_nav_menu( array( 'container' => '', 'menu_class' => '') ); ?>
 		</div>
 

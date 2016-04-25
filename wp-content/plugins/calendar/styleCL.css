@@ -75,3 +75,15 @@
     border-radius: 4px;
 		background-color: #000;
 }
+
+.uploadBox > img, .uploadBox .remove_image_button{
+  display: none;
+}
+
+.displayEverything.uploadBox > img{
+  display: block;
+}
+
+.displayEverything.uploadBox .remove_image_button{
+  display: inline-block;
+}

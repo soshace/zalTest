@@ -4,6 +4,8 @@ jQuery(function($){
 	 * вы также можете привязать это действие к клику по самому изображению
 	 */
 	$('.upload_image_button').click(function(){
+		var uploadBox = $(this).closest(".uploadBox");
+		uploadBox.addClass("displayEverything");
 		var send_attachment_bkp = wp.media.editor.send.attachment;
 		var button = $(this);
 		wp.media.editor.send.attachment = function(props, attachment) {

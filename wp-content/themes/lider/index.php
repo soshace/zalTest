@@ -31,7 +31,11 @@
 								if (have_posts()) :
 
 									while (have_posts()) : the_post();
-										the_content();
+									$mobPhone = get_field( "mobPhone" );
+									$workphone = get_field( "workphone" );
+									?>
+									<h4><?php echo $mobPhone ?>,<br> <?php echo $workphone ?></h4>
+									<?php
 									endwhile;
 					      endif;
 							?>

@@ -18,8 +18,8 @@ function page_excerpt() {
 }
 add_action('init', 'page_excerpt');
 
-define('Phn_NAME', "Телефоны");
-define('Phn_SINGLE', "Телефоны");
+define('Phn_NAME', "Контакты");
+define('Phn_SINGLE', "Контакты");
 define('Phn_TYPE', "phones");
 
 $post = $wp_query->post;
