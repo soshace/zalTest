@@ -120,7 +120,7 @@ case 'button':
         type: "post",
           success: function(data){
 
-            location.reload();
+            // location.reload();
           }
         });
         });
@@ -221,14 +221,37 @@ add_action('wp_ajax_nopriv_deleteFieldsPhoto','deleteFieldsPhoto');
 function load_custom_field_data(){
   global $wpdb;
   $metakeyText= $_POST['metakeyText'];
+  $metakeyFile= $_POST['metakeyFile'];
+  $metakeyFileSrc= $_POST['metakeyFileSrc'];
+  $fieldsKey= $_POST['fieldsKey'];
+  $postIDk= $_POST['postIDk'];
 
-  if($metakeyText != ''){
-    $postIDk= $_POST['postIDk'];
-    $fieldsKey= $_POST['fieldsKey'];
-    $metakeyFile=$_POST['metakeyFile'];
-    $metakeyFileSrc=$_POST['metakeyFileSrc'];
-    $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $metakeyFile, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
+  $photoUpplCount = $wpdb->get_var("SELECT COUNT(ID), ID FROM wp_posts WHERE guid = '$metakeyFileSrc'");
+  echo "'photoUpplCount =' $photoUpplCount";
+  echo "'metakeyFileSrc =' $metakeyFileSrc";
+
+  if($photoUpplCount > 0)
+  {
+      $photoUpplTitle = $wpdb->get_row("SELECT post_title, post_name FROM wp_posts WHERE guid = '$metakeyFileSrc'");
+
+      // $attachmentL = array(
+      //   'guid'           => $metakeyFileSrc,
+      //   'post_mime_type' => 'image/jpeg',
+      //   'post_title'     => $photoUpplTitle->post_title,
+      //   'post_content'   => '',
+      //   'post_status'    => 'inherit'
+      // );
+      // $attach_id = wp_insert_attachment( $attachmentL, $metakeyFileSrc, $postIDk );
+      media_sideload_image($metakeyFileSrc, $postIDk);
   }
+
+    if($metakeyText != ''){
+      $postIDk= $_POST['postIDk'];
+      $fieldsKey= $_POST['fieldsKey'];
+      $metakeyFile=$_POST['metakeyFile'];
+      $metakeyFileSrc=$_POST['metakeyFileSrc'];
+      $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $metakeyFile, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
+    }
   die();
 };
 

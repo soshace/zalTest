@@ -67,6 +67,11 @@ function edit_admin_menus() {
 add_action( 'admin_menu', 'edit_admin_menus' );
 add_filter('custom_menu_order', '__return_true'); // Применить custom_menu_order
 
+function my_upload_size_limit( $limit ) {
+add_filter( 'upload_size_limit', 'my_upload_size_limit' );
+    return wp_convert_hr_to_bytes( '10M' );
+}
+
 function custom_menu_order($menu_ord) {
     if (!$menu_ord) return true;
 

@@ -34,7 +34,7 @@
                     <?php
     								if ( has_post_thumbnail() ) {
     									$image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'  );
-    									$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), $size, $icon );
+    									$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail', $icon );
     									?>
       								<a href="<?php echo get_the_permalink() ?>" class="image_link"><div class="cover"></div><img src="<?php echo $thumbnail_src[0] ?>"></a>
     								<?php
