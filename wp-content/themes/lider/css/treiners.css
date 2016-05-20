@@ -75,6 +75,7 @@
 	height: 100%;
 	background: url(../img/user.png) no-repeat center;
 	min-height: 230px;
+	background-size: contain;
 }
 
 .treiners .text:after {
@@ -163,4 +164,3 @@
   	display: none;
   }
 }
-
