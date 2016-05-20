@@ -81,10 +81,6 @@ td ul li:last-child {
 	background: #fff;
 }
 
-.priceBloc .priceCont, .priceBloc p{
-  white-space: pre-line;
-}
-
 /*//// Media ////////////////////////////*/
 @media (max-width: 1290px) {
 .header .social {
@@ -103,10 +99,6 @@ td ul li:last-child {
 }
 
 @media (max-width: 600px) {
-  .priceBloc{
-    overflow: auto;
-  }
-
   .p50 {
     width: 100%;
   }
