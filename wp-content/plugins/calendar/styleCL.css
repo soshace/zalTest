@@ -7,6 +7,10 @@
   overflow: hidden
 }
 
+.attachmentEmptyH{
+  display: none !important;
+}
+
 .attachmDiv .attachmItem {
 	float: left;
 	padding: 0 10px 20px;

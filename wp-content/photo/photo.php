@@ -63,7 +63,7 @@ global $post;  // Глобальный $post для получения id соз
 echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
 
     // Начинаем выводить таблицу с полями через цикл
-    echo '<table class="form-table photoTable attachment-fieldset attachmentEmpty" id="photoTable">';
+    echo '<table class="form-table photoTable" id="photoTable">';
     foreach ($meta_fields as $field) {
         // Получаем значение если оно есть для этого поля
         $meta = get_post_meta($post->ID, $field['id'], true);
@@ -73,12 +73,9 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
         echo  '<tr>
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
                 <td><div  class="uploadBox">
-            <img width="115px" height="90px" class="imgUploadSrc" />
+            <img data-src="' . $default . '" src="' . $src . '" width="115px" height="90px" class="imgUploadSrc" />
             <div>
-              <input type="hidden" id="attachment-id" class="regular-text" />
-          		<input type="hidden" id="attachment-title" class="regular-text" />
-          		<input type="hidden" id="attachment-filename" class="regular-text" />
-          		<input type="hidden" id="attachment-url" class="regular-text" />
+              <input type="hidden" name="' . $field['id'] . '" class="' . $field['id'] . '" value="" multiple/>
               <button type="submit" class="upload_image_button button">Загрузить</button>
               <button type="submit" class="remove_image_button button">&times;</button>
             </div>
@@ -89,26 +86,11 @@ case 'textarea':
             <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
             <td><input name="'.$field['id'].'" id="'.$field['id'].'" value="" style="width: 100%"/>
         <br /><span class="description">'.$field['desc'].'</span></td></tr></table>';
-    // echo '	<div id="attachment-details-tmpl" class="attachment-fieldset">
-		// 	<div class="alignleft">
-		// 		<input type="hidden" id="attachment-id" class="regular-text" />
-		// 		<input type="hidden" id="attachment-title" class="regular-text" />
-		// 		<input type="hidden" id="attachment-filename" class="regular-text" />
-		// 		<input type="hidden" id="attachment-height" class="regular-text" />
-		// 		<input type="hidden" id="attachment-width" class="regular-text" />
-		// 		<input type="hidden" id="attachment-url" class="regular-text" />
-		// 	</div>
-    //
-		// 	<div class="alignleft">
-		// 		<img id="attachment-src" />
-		// 	</div>
-		// </div>';
 break;
 case 'button':
     echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a>
     <script>
     jQuery(function($){
-
     var fieldsKey, d;
     $(document).on("click", ".mybutton", function(){
       d = new Date();
@@ -138,7 +120,7 @@ case 'button':
         type: "post",
           success: function(data){
 
-            // location.reload();
+            location.reload();
           }
         });
         });
@@ -191,41 +173,10 @@ case 'button':
               },
             type: "post",
               success: function(data){
-                // location.reload();
+                location.reload();
               }
             });
         });
-
-        $(".remove_image_button").click(function(){
-          console.log("SDfsdfsdf");
-         var r = confirm("Уверены?");
-         if (r == true) {
-          //  var photoTableThis = $(this).closest(".photoTable");
-          //  var inputsThisAttach = photoTableThis.find("input");
-          //  inputsThisAttach.each(function() {
-          //    $(this).val("");
-           });
-
-           var attachmentIDDel = photoTableThis.find("#attachment-url");
-           attachmentIDDel = attachmentIDDel.val();
-
-           $.ajax({
-             url: ajaxurl,
-             data:
-               {
-                 "action": "deleteFieldsPhoto",
-                 "attachmentIDDel": attachmentIDDel,
-               },
-             type: "post",
-               success: function(data){
-                 $(".imgUploadSrc").attr("src", "");
-                 $(".myfileinp").val("");
-               }
-             });
-         }
-         return false;
-
-           });
 
 
 
@@ -316,12 +267,12 @@ function updateFieldsPhoto(){
 };
 
 function deleteFieldsPhoto(){
-  // global $wpdb;
-  // $attachmentIDDel=$_POST['attachmentIDDel'];
-  // echo $attachmentIDDel;
-  // $wpdb->query("DELETE FROM wp_posts WHERE ID = $attachmentIDDel");
-  // $wpdb->query("DELETE FROM wp_posts WHERE post_title = $attachmentIDDel");
-  // die();
+  global $wpdb;
+  $attachmentIDDel=$_POST['attachmentIDDel'];
+  echo $attachmentIDDel;
+  $wpdb->query("DELETE FROM wp_posts WHERE ID = $attachmentIDDel");
+  $wpdb->query("DELETE FROM wp_posts WHERE post_title = $attachmentIDDel");
+  die();
 };
 
 
