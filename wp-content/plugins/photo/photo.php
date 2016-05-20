@@ -75,7 +75,7 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
                 <td><div  class="uploadBox">
             <img data-src="' . $default . '" src="' . $src . '" width="115px" height="90px" class="imgUploadSrc" />
             <div>
-              <input type="hidden" name="' . $field['id'] . '" class="' . $field['id'] . '" value="" />
+              <input type="hidden" name="' . $field['id'] . '" class="' . $field['id'] . '" value="" multiple/>
               <button type="submit" class="upload_image_button button">Загрузить</button>
               <button type="submit" class="remove_image_button button">&times;</button>
             </div>
@@ -120,7 +120,7 @@ case 'button':
         type: "post",
           success: function(data){
 
-            // location.reload();
+            location.reload();
           }
         });
         });
@@ -233,15 +233,6 @@ function load_custom_field_data(){
   if($photoUpplCount > 0)
   {
       $photoUpplTitle = $wpdb->get_row("SELECT post_title, post_name FROM wp_posts WHERE guid = '$metakeyFileSrc'");
-
-      // $attachmentL = array(
-      //   'guid'           => $metakeyFileSrc,
-      //   'post_mime_type' => 'image/jpeg',
-      //   'post_title'     => $photoUpplTitle->post_title,
-      //   'post_content'   => '',
-      //   'post_status'    => 'inherit'
-      // );
-      // $attach_id = wp_insert_attachment( $attachmentL, $metakeyFileSrc, $postIDk );
       media_sideload_image($metakeyFileSrc, $postIDk);
   }
 

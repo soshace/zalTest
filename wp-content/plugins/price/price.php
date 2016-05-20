@@ -23,7 +23,7 @@ function PR_get_slider(){
             $priceDivTextblock .='
                   <div class="block_float_l p50">
                     <div class="card_tb">
-                      <div class="card_line_tb card_line_lr">
+                      <div class="card_line_tb card_line_lr priceBloc">
                         <h4>' .get_the_title() .'</h4>';
                         $priceDivTextblock .='' . get_the_content() .'';
               $priceDivTextblock .='</div>';
