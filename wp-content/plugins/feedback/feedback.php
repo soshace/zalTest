@@ -25,9 +25,11 @@ function FB_get_slider(){
             $feedbackTextblock .='
                   <div class="block_float_l p100">
                     <div class="card">
-                      <div class="p25 image">
-                        <img src="'. $thumbnail_src[0] .'" alt="">
-                      </div>
+                      <div class="p25 image">';
+                        if ( $thumbnail_src[0]) {
+                           $feedbackTextblock .='<img src="'. $thumbnail_src[0] .'" alt="">';
+                         }
+                       $feedbackTextblock .='</div>
           						<div class="offset25 p75 text card_line_lr card_line_tb">
           							<h4>' .get_the_title() .'</h4>
                         <p class="msg">' .get_the_content() .'</p></div></div></div>';

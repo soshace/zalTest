@@ -51,9 +51,6 @@
   <script type="text/javascript">
 		$(document).ready(function() {
 			$(".gallery").fancybox();
-			$("#MenuButton").click(function(ev){
-				$("#MobileMenu").slideToggle(300);
-			});
 		});
 	</script>
 </body>

@@ -34,12 +34,5 @@
     		</section>
       </div>
       <?php get_footer(); ?>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#MenuButton").click(function(ev){
-				$("#MobileMenu").slideToggle(300);
-			});
-		});
-	</script>
 </body>
 </html>

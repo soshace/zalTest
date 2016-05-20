@@ -25,7 +25,12 @@
   </div>
 </section>
 <script type="text/javascript">
-  $( document ).ready(function() {
+	$(document).ready(function() {
+		$("#MenuButton").click(function(ev){
+			$("#MobileMenu").slideToggle(300);
+      $('body').toggleClass('noscrollBody');
+      $('#MobileMenu').toggleClass('menuScr');
+		});
 
     if(!($('li').is('.current-menu-item'))){
       var windLocat = window.location.pathname;
