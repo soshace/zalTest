@@ -74,7 +74,7 @@ echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce
                 <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
                 <td><div  class="uploadBox">
             <img width="115px" height="90px" class="imgUploadSrc" />
-            <div>
+            <div class="imgAttr">
               <input type="hidden" id="attachment-id" class="regular-text" />
           		<input type="hidden" id="attachment-title" class="regular-text" />
           		<input type="hidden" id="attachment-filename" class="regular-text" />
@@ -89,20 +89,6 @@ case 'textarea':
             <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
             <td><input name="'.$field['id'].'" id="'.$field['id'].'" value="" style="width: 100%"/>
         <br /><span class="description">'.$field['desc'].'</span></td></tr></table>';
-    // echo '	<div id="attachment-details-tmpl" class="attachment-fieldset">
-		// 	<div class="alignleft">
-		// 		<input type="hidden" id="attachment-id" class="regular-text" />
-		// 		<input type="hidden" id="attachment-title" class="regular-text" />
-		// 		<input type="hidden" id="attachment-filename" class="regular-text" />
-		// 		<input type="hidden" id="attachment-height" class="regular-text" />
-		// 		<input type="hidden" id="attachment-width" class="regular-text" />
-		// 		<input type="hidden" id="attachment-url" class="regular-text" />
-		// 	</div>
-    //
-		// 	<div class="alignleft">
-		// 		<img id="attachment-src" />
-		// 	</div>
-		// </div>';
 break;
 case 'button':
     echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a>
@@ -119,28 +105,60 @@ case 'button':
         ("00" + d.getUTCMinutes()).slice(-2) + ":" +
         ("00" + d.getUTCSeconds()).slice(-2);
       var postIDk = '. $post->ID .';
-      var metakeyFile = $(".myfileinp").val();
-      var metakeyFileSrc = $(".imgUploadSrc").attr("src");
-      var metakeyText = $("#mytextarea").val();
+      var addedCount = $(".attachment-fieldset.added").length;
+
+      var metakeyID = [];
+      var metakeyTitle = [];
+      var metakeyFile = [];
+      var metakeyFileSrc = [];
+      var metakeyText = [];
+
+      $(".attachment-fieldset.added").each(function() {
+        var xItem = $(this).find("#attachment-id");
+        xItem = xItem.val();
+        metakeyID.push(xItem);
+        xItem = $(this).find("#attachment-title");
+        xItem = xItem.val();
+        metakeyTitle.push(xItem);
+        xItem = $(this).find("#attachment-filename");
+        xItem = xItem.val();
+        metakeyFile.push(xItem);
+        xItem = $(this).find("#attachment-url");
+        xItem = xItem.val();
+        metakeyFileSrc.push(xItem);
+        xItem = $(this).find("#mytextarea");
+        xItem = xItem.val();
+        metakeyText.push(xItem);
+      });
+
+      console.log(metakeyID);
+      console.log(metakeyTitle);
+      console.log(metakeyFile);
+      console.log(metakeyFileSrc);
+      console.log(metakeyText);
 
 
-      $.ajax({
-        url: ajaxurl,
-        data:
-          {
-            "action": "load_custom_field_data",
-            "postIDk": postIDk,
-            "metakeyFile": metakeyFile,
-            "metakeyFileSrc": metakeyFileSrc,
-            "metakeyText": metakeyText,
-            "fieldsKey": fieldsKey
-          },
-        type: "post",
-          success: function(data){
 
-            // location.reload();
-          }
-        });
+        $.ajax({
+          url: ajaxurl,
+          data:
+            {
+              "action": "load_custom_field_data",
+              "postIDk": postIDk,
+              "metakeyID": metakeyID,
+              "metakeyTitle": metakeyTitle,
+              "metakeyFile": metakeyFile,
+              "metakeyFileSrc": metakeyFileSrc,
+              "metakeyText": metakeyText,
+              "fieldsKey": fieldsKey,
+              "addedCount": addedCount
+            },
+          type: "post",
+            success: function(data){
+              location.reload();
+            }
+          });
+
         });
 
         var attachmItem, attachmDesc;
@@ -154,9 +172,12 @@ case 'button':
           attachmDesc = attachmItem.find("p.descAttach");
           attachmDesc = attachmDesc.text();
           attachmItem = attachmItem.attr("id");
-
-          $("#mytextarea").attr("value", attachmDesc );
+          if (attachmDesc != "У данного фото нет описания") {
+            $("#mytextarea").attr("value", attachmDesc );
+          }
           $(".imgUploadSrc").attr("src", attachmImg );
+          $("#attachment-url").attr("value", attachmImg );
+          $("#attachment-id").attr("value", attachmItem );
           $(".mybutton").addClass("saveChangBtn");
           $(".saveChangBtn").removeClass("mybutton");
           $(".saveChangBtn").text("Сохранить изменения");
@@ -166,8 +187,7 @@ case 'button':
 
         $(document).on("click", ".saveChangBtn", function(){
           var postIDk = '. $post->ID .';
-          var metakeyFile = $(".myfileinp").val();
-          var metakeyFileSrc = $(".imgUploadSrc").attr("src");
+          var metakeyFile = $("#attachment-id").val();
           var metakeyText = $("#mytextarea").val();
           d = new Date();
           fieldsKey = d.getUTCFullYear() + "-" +
@@ -182,54 +202,67 @@ case 'button':
               {
                 "action": "updateFieldsPhoto",
                 "postIDk": postIDk,
-                "postIDOld": attachmItem,
                 "metakeyFile": metakeyFile,
-                "metakeyFileSrc": metakeyFileSrc,
                 "metakeyText": metakeyText,
-                "metakeyTextOld": attachmDesc,
                 "fieldsKey": fieldsKey
               },
             type: "post",
               success: function(data){
-                // location.reload();
+                console.log(metakeyFile);
+                location.reload();
               }
             });
         });
 
-        $(".remove_image_button").click(function(){
-          console.log("SDfsdfsdf");
+        $(document).on("click", ".remove_image_button", function(){
          var r = confirm("Уверены?");
          if (r == true) {
-          //  var photoTableThis = $(this).closest(".photoTable");
-          //  var inputsThisAttach = photoTableThis.find("input");
-          //  inputsThisAttach.each(function() {
-          //    $(this).val("");
-           });
-
-           var attachmentIDDel = photoTableThis.find("#attachment-url");
-           attachmentIDDel = attachmentIDDel.val();
-
-           $.ajax({
-             url: ajaxurl,
-             data:
-               {
-                 "action": "deleteFieldsPhoto",
-                 "attachmentIDDel": attachmentIDDel,
-               },
-             type: "post",
-               success: function(data){
-                 $(".imgUploadSrc").attr("src", "");
-                 $(".myfileinp").val("");
-               }
-             });
-         }
-         return false;
-
-           });
-
-
-
-
+            var postIDk = '. $post->ID .';
+            var photoTableThis = $(this).closest(".photoTable");
+            var inputsThisAttach = photoTableThis.find("#attachment-id");
+            inputsThisAttach = inputsThisAttach.val();
+            var addedCount = $(".attachment-fieldset.added").length;
+            $.ajax({
+              url: ajaxurl,
+              data:
+                {
+                  "action": "deleteFieldsPhoto",
+                  "attachmentIDDel": inputsThisAttach,
+                  "postIDk": postIDk
+                },
+              type: "post",
+                success: function(data){
+                  if(addedCount < 2){
+                    location.reload();
+                  } else{
+                    photoTableThis.remove();
+                  }
+                }
+              });
+          }
+           return false;
+         });
+         $(document).on("click", ".delListPhoto", function(){
+           var r = confirm("Уверены?");
+           if (r == true) {
+             var postIDk = '. $post->ID .';
+             var attachmItemDel = $(this).closest(".attachmItem");
+             attachmItemDel = attachmItemDel.attr("id");
+             $.ajax({
+               url: ajaxurl,
+               data:
+                 {
+                   "action": "deleteFieldsPhoto",
+                   "attachmentIDDel": attachmItemDel,
+                   "postIDk": postIDk
+                 },
+               type: "post",
+                 success: function(data){
+                   location.reload();
+                 }
+               });
+             }
+         });
     })
     </script>';
     echo '<div class="attachmDiv">';
@@ -269,59 +302,59 @@ add_action('wp_ajax_nopriv_deleteFieldsPhoto','deleteFieldsPhoto');
 
 function load_custom_field_data(){
   global $wpdb;
-  $metakeyText= $_POST['metakeyText'];
+  $postIDk= $_POST['postIDk'];
+  $metakeyID= $_POST['metakeyID'];
+  $metakeyTitle= $_POST['metakeyTitle'];
   $metakeyFile= $_POST['metakeyFile'];
   $metakeyFileSrc= $_POST['metakeyFileSrc'];
+  $metakeyText= $_POST['metakeyText'];
   $fieldsKey= $_POST['fieldsKey'];
-  $postIDk= $_POST['postIDk'];
+  $addedCount= $_POST['addedCount'];
 
-  $photoUpplCount = $wpdb->get_var("SELECT COUNT(ID), ID FROM wp_posts WHERE guid = '$metakeyFileSrc'");
-  echo "'photoUpplCount =' $photoUpplCount";
-  echo "'metakeyFileSrc =' $metakeyFileSrc";
+  for ($iN=0; $iN < $addedCount; $iN++) {
+    $photoUpplCount = $wpdb->get_var("SELECT COUNT(ID), ID FROM wp_posts WHERE guid = '$metakeyFileSrc[$iN]' AND post_parent != $postIDk");
 
-  if($photoUpplCount > 0)
-  {
-      $photoUpplTitle = $wpdb->get_row("SELECT post_title, post_name FROM wp_posts WHERE guid = '$metakeyFileSrc'");
-      media_sideload_image($metakeyFileSrc, $postIDk);
-  }
 
-    if($metakeyText != ''){
-      $postIDk= $_POST['postIDk'];
-      $fieldsKey= $_POST['fieldsKey'];
-      $metakeyFile=$_POST['metakeyFile'];
-      $metakeyFileSrc=$_POST['metakeyFileSrc'];
-      $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $metakeyFile, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
+    if($photoUpplCount > 0)
+    {
+        media_sideload_image($metakeyFileSrc[$iN], $postIDk);
+        if($metakeyText[$iN] != ''){
+          $lastIdPost = $wpdb->get_row("SELECT ID FROM wp_posts ORDER BY ID DESC");
+          $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText[$iN], 'post_title' => $lastIdPost->ID, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%s', '%d', '%s'));
+        }
+    } else{
+      if($metakeyText[$iN] != ''){
+        $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText[$iN], 'post_title' => $metakeyID[$iN], 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%s', '%d', '%s'));
+      }
     }
+  }
   die();
 };
 
 function updateFieldsPhoto(){
   global $wpdb;
   $metakeyFile=$_POST['metakeyFile'];
-  $metakeyFileSrc=$_POST['metakeyFileSrc'];
   $metakeyText= $_POST['metakeyText'];
   $postIDk= $_POST['postIDk'];
-  $postIDOld= $_POST['postIDOld'];
-  $metakeyTextOld= $_POST['metakeyTextOld'];
   $fieldsKey= $_POST['fieldsKey'];
 
-  echo $metakeyText;
+  $oldDesc= $wpdb->get_row("SELECT post_content FROM wp_posts WHERE post_title = $metakeyFile");
 
-  if ($metakeyTextOld == 'У данного фото нет описания'){
-    $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $postIDOld, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
+  if (!$oldDesc->post_content){
+    $wpdb->insert( $wpdb->posts, array('post_author' => '1', 'post_date' => $fieldsKey, 'post_content' => $metakeyText, 'post_title' => $metakeyFile, 'post_status' => 'inherit', 'post_parent' => $postIDk, 'post_type' => 'attachmentText'), array('%d', '%s', '%s', '%s', '%d', '%s'));
   }else{
-    $wpdb->update($wpdb->posts, array("post_content" => $metakeyText), array("post_content" => $metakeyTextOld), array("%s"), array("%s") );
+    $wpdb->update($wpdb->posts, array("post_content" => $metakeyText), array("post_title" => $metakeyFile), array("%s"), array("%s") );
   }
   die();
 };
 
 function deleteFieldsPhoto(){
-  // global $wpdb;
-  // $attachmentIDDel=$_POST['attachmentIDDel'];
-  // echo $attachmentIDDel;
-  // $wpdb->query("DELETE FROM wp_posts WHERE ID = $attachmentIDDel");
-  // $wpdb->query("DELETE FROM wp_posts WHERE post_title = $attachmentIDDel");
-  // die();
+  global $wpdb;
+  $postIDk= $_POST['postIDk'];
+  $attachmentIDDel=$_POST['attachmentIDDel'];
+  $wpdb->query("DELETE FROM wp_posts WHERE ID = $attachmentIDDel AND post_parent = $postIDk");
+  $wpdb->query("DELETE FROM wp_posts WHERE post_title = $attachmentIDDel AND post_parent = $postIDk");
+  die();
 };
 
 

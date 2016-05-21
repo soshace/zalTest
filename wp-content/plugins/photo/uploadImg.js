@@ -46,13 +46,13 @@ var ds = ds || {};
 		},
 
 		showAttachmentDetails: function( attachment ) {
+			$(".uploadBox").addClass("displayEverything");
 			$(".attachmentEmpty").addClass("attachmentEmptyH");
 
 			var details_tmpl = $( media.detailsTemplate ),
 
 				details = details_tmpl.clone();
-				var uploadBox = $(".uploadBox");
-				uploadBox.addClass("displayEverything");
+
 
 			details.addClass( "added" );
 			details.removeClass("attachmentEmpty");
@@ -63,10 +63,14 @@ var ds = ds || {};
 				$( this ).val( attachment.get( key ) );
 			} );
 
-			// details.attr( "id", "attachment-details-" + attachment.get( "id" ) );
+			details.attr( "id", "attachment-details-" + attachment.get( "id" ) );
 
 			var sizes = attachment.get( "sizes" );
-			$( "img", details ).attr( "src", sizes.thumbnail.url );
+			if (!sizes.thumbnail) {
+				$( "img", details ).attr( "src", sizes.full.url );
+			} else{
+				$( "img", details ).attr( "src", sizes.thumbnail.url );
+			}
 
 			// $( "textarea", details ).val( JSON.stringify( attachment, null, 2 ) );
 
@@ -84,6 +88,17 @@ var ds = ds || {};
 
 	$( media.init );
 } )( jQuery );
+
+//  var photoTableThis = $(this).closest(".photoTable");
+//  var inputsThisAttach = photoTableThis.find("input");
+//  inputsThisAttach.each(function() {
+//    $(this).val("");
+//  var attachmentIDDel = photoTableThis.find("#attachment-url");
+//  var attachmentIDDel = photoTableThis.find(".uploadBox");
+//  attachmentIDDel = attachmentIDDel.val();
+// });
+
+
 	// $(".upload_image_button").click(function(){
 	// 	var uploadBox = $(this).closest(".uploadBox");
 	// 	uploadBox.addClass("displayEverything");
@@ -102,23 +117,5 @@ var ds = ds || {};
 	// 	return false;
 	// });
 
-		// 	$(document).on("click", ".delListPhoto", function(){
-		// 		var r = confirm("Уверены?");
-		// 		if (r == true) {
-		// 			var attachmItemDel = $(this).closest(".attachmItem");
-		// 			attachmItemDel = attachmItemDel.attr("id");
-		// 			$.ajax({
-		// 				url: ajaxurl,
-		// 				data:
-		// 					{
-		// 						"action": "deleteFieldsPhoto",
-		// 						"attachmentIDDel": attachmItemDel,
-		// 					},
-		// 				type: "post",
-		// 					success: function(data){
-		// 						location.reload();
-		// 					}
-		// 				});
-		// 			}
-		// 	});
+
 		//  });
