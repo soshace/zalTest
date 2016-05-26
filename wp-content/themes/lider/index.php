@@ -85,7 +85,7 @@
 							<div class="card_line_lr card_line_tb">
 								<h4><?php the_title() ?></h4>
 								<p class="date"><?php the_date() ?></p>
-								<?php the_excerpt() ?>
+								<div class="contentExcerpt"><?php the_excerpt() ?></div>
 								<a class="read_more" href='<?php the_permalink() ?>'>Далее</a>
 							</div>
 						</div>

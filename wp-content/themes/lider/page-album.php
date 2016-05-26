@@ -5,6 +5,7 @@
     		<?php get_sidebar(); ?>
         <section class="section_tb photo">
           <div class="section_line_lr conteiner">
+            <h1>Фотографии</h1>
             <?php
     				$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
     				$args = array(
@@ -31,18 +32,23 @@
 
     						<div class="block_float_l p50">
     							<div class="card_b">
+                    <a href="<?php echo get_the_permalink() ?>" class="image_link"><div class="cover"></div><div class="newsImgCard PhtoImgCard">
                     <?php
     								if ( has_post_thumbnail() ) {
     									$image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'  );
     									$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail', $icon );
     									?>
-      								<a href="<?php echo get_the_permalink() ?>" class="image_link"><div class="cover"></div><img src="<?php echo $thumbnail_src[0] ?>"></a>
+      								<img src="<?php echo $thumbnail_src[0] ?>">
     								<?php
     								}
     								?>
+                  </div>
+                    </a>
                     <div class="card_line_lr card_line_tb">
                       <h4><?php echo get_the_title() ?></h4>
-                      <p><?php echo get_the_content() ?></p>
+                      <div class="photoExcerpt">
+                        <p><?php echo get_the_content() ?></p>
+                      </div>
                     </div></div></div>
                     <?php if ($col == 2){ ?>
                       </div>

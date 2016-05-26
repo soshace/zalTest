@@ -270,7 +270,7 @@ button:hover, .link_button:hover {
 
 .footer {
 	position: relative;
-	top: -104px;
+	top: -114px;
 	background: #1f1f1f;
 	color: #3e3e3e;
 }
@@ -342,11 +342,35 @@ button:hover, .link_button:hover {
   min-height: 456px;
 }
 
+.PhtoImgCard{
+	min-height: 449px;
+}
+
+.contentExcerpt{
+  height: 110px;
+	overflow: hidden;
+}
+
+.photoExcerpt{
+	max-height: 183px;
+	overflow: hidden;
+}
+
+.photoExcerpt p{
+	white-space: pre-line;
+}
+
 @media (max-width: 1360px) {
 	.header .text {
 	    display: inline-block;
 	    float: left;
 	    margin: 30px 0 0 16px;
+	}
+}
+
+@media (max-width: 600px) {
+	.footer{
+		top: -99px;
 	}
 }
 

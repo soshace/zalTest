@@ -21,14 +21,13 @@
                           <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
                         </div>
                         <div class="conteiner section_line_lr calendar_line_lr">
+                          <h1>Расписание</h1>
                         <div class="card_b">
 
                         <table cellspacing="0" cellpadding="0">
-                            <tbody><tr>
-                                <td rowspan="2" &nbsp;<="" td="">
-                                </td><td colspan="7"><h2>Расписание занятий</h2></td>
-                            </tr>
+                            <tbody>
                             <tr>
+                                <td></td>
                                 <td class="vertMid">Понедельник</td>
                                 <td class="vertMid">Вторник</td>
                                 <td class="vertMid">Среда</td>
@@ -210,6 +209,7 @@
 
                   <section class="calendar section_tb calendarSM">
                     <div class="section_line_lr">
+                      <h1>Расписание</h1>
 
 
           <?php

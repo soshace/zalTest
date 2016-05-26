@@ -20,8 +20,8 @@ function TR_get_slider(){
       query_posts($TR_query);
 
         if (have_posts()) : while (have_posts()) : the_post();
-            $img= get_the_post_thumbnail( $post->ID, 'large' );
-            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "large" );
+            $img= get_the_post_thumbnail( $post->ID, 'thumbnail' );
+            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "thumbnail" );
             $valKredo = get_field( "credo" );
             $valPhone = get_field( "phone" );
             $valSvk = get_field( "svk" );
