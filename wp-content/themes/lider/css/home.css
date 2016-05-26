@@ -33,7 +33,7 @@
 	border: none;
 }
 
-.head_slider .title_phone h4, 
+.head_slider .title_phone h4,
 .head_slider a{
 	position: relative;
 	display: inline-block;
@@ -201,7 +201,7 @@
 	}
 
 	h1 {
-		font-size: 60px;
+		font-size: 40px;
 	}
 
   .footer .copy {

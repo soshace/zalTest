@@ -6,7 +6,7 @@
 	padding-bottom: 12px;
 }
 
-.treiners .kredo:before {
+.treiners .kredo:before, .treiners .kredo:after {
 	content: "«";
 	font-size: 24px;
 	margin-right: 8px;
@@ -14,6 +14,12 @@
 	vertical-align: middle;
     font-style: normal;
     speak: none;
+}
+
+.treiners .kredo:after{
+	content: "»";
+	margin-right: 0px;
+	margin-left: 8px;
 }
 
 .treiners .phone {
@@ -142,7 +148,7 @@
 	}
 
 	h1 {
-		font-size: 50px;
+		font-size: 40px;
 	}
 
   .treiners .image {
