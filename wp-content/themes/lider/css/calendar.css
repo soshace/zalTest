@@ -10,7 +10,8 @@
 
 
 .calendar .print {
-  line-height: 48px;
+  line-height: 1;
+  display: inline-block;
 }
 
 .section_line_lr {

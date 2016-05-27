@@ -2,7 +2,7 @@
 .feedback .card {
 	overflow: hidden;
 	position: relative;
-		min-height: 232px;
+		min-height: 280px;
 }
 
 .feedback .image, .feedback .text {
@@ -116,7 +116,7 @@
 		position: relative;
 	}
 
-	.feedback .offset25 {
+	.feedback .offset33 {
 		margin: 0;
 	}
 

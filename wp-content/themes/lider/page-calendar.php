@@ -17,10 +17,9 @@
                   $col = 0;
                   ?>
 
-                  <section class="section_t calendar calendarXL"><div class="section_line_lr">
-                          <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
-                        </div>
+                  <section class="section_t calendar calendarXL">
                         <div class="conteiner section_line_lr calendar_line_lr">
+                          <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
                           <h1>Расписание</h1>
                         <div class="card_b">
 

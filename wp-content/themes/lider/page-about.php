@@ -5,8 +5,7 @@
     		<?php get_sidebar(); ?>
     		<section class="section_tb info">
     			<div class="conteiner section_line_lr">
-            <div class="card_b">
-              <div class="card_line_lr aboutLine">
+
                 <?php
             		// Start the loop.
             		while ( have_posts() ) : the_post();
@@ -16,14 +15,17 @@
                     }
                     ?>
                     <h1><?php the_title(); ?></h1>
-                    <?php if ($image_url[0]){ ?>
-                      <img src='<?php echo $image_url[0] ?>' alt="">
-                    <?php } ?>
+                    <div class="card_b">
+                      <div class="card_line_lr aboutLine">
+                      <?php if ($image_url[0]){ ?>
+                        <img src='<?php echo $image_url[0] ?>' alt="">
+                      <?php } ?>
 
-                    <?php the_content(); ?>
+                      <?php the_content(); ?>
+                      </div>
+                    </div>
                 <?php endwhile; ?>
-              </div>
-            </div>
+
     			</div>
     		</section>
     		<section class="section_b">

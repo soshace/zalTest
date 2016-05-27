@@ -21,16 +21,16 @@ function FB_get_slider(){
 
         if (have_posts()) : while (have_posts()) : the_post();
             $img= get_the_post_thumbnail( $post->ID, 'large' );
-            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "large" );
+            $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "thumbnail" );
             $feedbackTextblock .='
                   <div class="block_float_l p100">
                     <div class="card">
-                      <div class="p25 image">';
+                      <div class="p33 image">';
                         if ( $thumbnail_src[0]) {
                            $feedbackTextblock .='<img src="'. $thumbnail_src[0] .'" alt="">';
                          }
                        $feedbackTextblock .='</div>
-          						<div class="offset25 p75 text card_line_lr card_line_tb">
+          						<div class="offset33 p66 text card_line_lr card_line_tb">
           							<h4>' .get_the_title() .'</h4>
                         <p class="msg">' .get_the_content() .'</p></div></div></div>';
 

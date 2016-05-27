@@ -7,14 +7,20 @@ p img {
     float: left;
 }
 
-.aboutLine > div:nth-child(2){
+.aboutLine > div:nth-child(1){
   max-width: 300px;
   float: left;
   padding-right: 16px;
 }
 
-.aboutLine > div:nth-child(2) img{
+.aboutLine > div:nth-child(1) img{
   height: auto;
+  padding-bottom: 16px;
+}
+
+
+.aboutLine.card_line_lr{
+  padding-top: 16px;
   padding-bottom: 16px;
 }
 
@@ -84,7 +90,7 @@ p img {
   	display: none;
   }
 
-  .aboutLine > div:nth-child(2) {
+  .aboutLine > div:nth-child(1) {
     max-width: 100%;
     float: left;
     padding-right: 0;
