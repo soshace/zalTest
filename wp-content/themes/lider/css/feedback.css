@@ -13,6 +13,7 @@
 .feedback .image {
 	position: absolute;
 	height: 100%;
+	overflow: hidden;
 }
 
 .feedback .text:after {
@@ -45,9 +46,7 @@
 
 .feedback .image{
 	position: absolute;
-	background: url(../img/user.png) no-repeat center;
 	height: 280px;
-	background-size: contain;
 }
 /*//// Media ////////////////////////////*/
 @media (max-width: 1290px) {
@@ -113,6 +112,7 @@
 
 	.feedback .image {
 		position: relative;
+		height: 400px;
 	}
 
 	.feedback .offset33 {

@@ -30,13 +30,13 @@ function TR_get_slider(){
             if ($valPubl == 'Да'){
               $treinersOurTextblock .='
                     <div class="block_float_l p100">
-                      <div class="card">
-                        <div class="p33 image">';
+                      <div class="card">';
                         if ( $thumbnail_src[0]) {
-                           $treinersOurTextblock .='<img src="'. $thumbnail_src[0] .'" alt="">';
+                           $treinersOurTextblock .='<div class="p33 image"><img src="'. $thumbnail_src[0] .'" alt=""></div>';
+                         } else{
+                           $treinersOurTextblock .='<div class="p33 image" style="background: url(/wp-content/themes/lider/img/user.png) no-repeat center; background-size: contain;"></div>';
                          }
-                $treinersOurTextblock .=' </div>
-            						<div class="offset33 p66 text card_line_lr card_line_tb">
+                $treinersOurTextblock .='<div class="offset33 p66 text card_line_lr card_line_tb">
             							<h4>' .get_the_title() .'</h4>';
                 if ($valKredo){
                   $treinersOurTextblock.= '<p class="kredo">' . $valKredo .'</p>';

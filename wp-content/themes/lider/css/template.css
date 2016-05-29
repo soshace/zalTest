@@ -286,8 +286,7 @@ button:hover, .link_button:hover {
 
 .newsCard .card_line{ overflow: hidden; }
 .newsCard .card_line img{
-	min-height: 456px;
-	width: auto;
+	width: 100%;
   margin: 0 auto;
 }
 
@@ -338,12 +337,7 @@ button:hover, .link_button:hover {
 
 .newsImgCard{
 	width: 100%;
-	background: url(../img/noimage565465654.gif) no-repeat center;
   min-height: 456px;
-}
-
-.PhtoImgCard{
-	min-height: 449px;
 }
 
 .contentExcerpt{
@@ -368,6 +362,12 @@ button:hover, .link_button:hover {
 	}
 }
 
+@media (max-width: 800px) {
+	.newsImgCard{
+		min-height: 350px;
+	}
+}
+
 @media (max-width: 600px) {
 	.footer{
 		top: -99px;
@@ -376,6 +376,6 @@ button:hover, .link_button:hover {
 
 @media (max-width: 480px) {
 	.newsImgCard{
-		background-size: contain;
+		background-size: contain !important;
 	}
 }

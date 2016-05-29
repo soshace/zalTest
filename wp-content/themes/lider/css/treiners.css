@@ -78,9 +78,7 @@
 
 .treiners .image {
 	position: absolute;
-	background: url(../img/user.png) no-repeat center;
 	height: 280px;
-	background-size: contain;
 	overflow: hidden;
 }
 
@@ -152,7 +150,8 @@
 	}
 
   .treiners .image {
-	position: relative;
+		position: relative;
+	  height: 400px
 	}
 
 	.treiners .offset33 {

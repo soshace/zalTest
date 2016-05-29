@@ -76,12 +76,13 @@
 				<div class="block_float_l p50">
 					<a href='<?php the_permalink() ?>' class="card_b_Link">
 						<div class="card_b newsCard">
-							<div class="card_line newsImgCard">
 							<?php if ( has_post_thumbnail()) {
 							   $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail');
-							   echo ' <img src="' . $large_image_url[0] . '" alt="">';
-							 } ?>
-							 </div>
+							   echo ' <div class="card_line newsImgCard"><img src="' . $large_image_url[0] . '" alt=""></div>';
+							 } else { ?>
+								 <div class="card_line newsImgCard" style="background: url(/wp-content/themes/lider/img/noimage565465654.gif) no-repeat center;"></div>
+							 <?php } ?>
+
 							<div class="card_line_lr card_line_tb">
 								<h4><?php the_title() ?></h4>
 								<p class="date"><?php the_date() ?></p>

@@ -24,13 +24,13 @@ function FB_get_slider(){
             $thumbnail_src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), "thumbnail" );
             $feedbackTextblock .='
                   <div class="block_float_l p100">
-                    <div class="card">
-                      <div class="p33 image">';
+                    <div class="card">';
                         if ( $thumbnail_src[0]) {
-                           $feedbackTextblock .='<img src="'. $thumbnail_src[0] .'" alt="">';
+                           $feedbackTextblock .='<div class="p33 image"><img src="'. $thumbnail_src[0] .'" alt=""></div>';
+                         } else{
+                           $feedbackTextblock .='<div class="p33 image" style="background: url(/wp-content/themes/lider/img/user.png) no-repeat center; background-size: contain;"></div>';
                          }
-                       $feedbackTextblock .='</div>
-          						<div class="offset33 p66 text card_line_lr card_line_tb">
+                       $feedbackTextblock .='<div class="offset33 p66 text card_line_lr card_line_tb">
           							<h4>' .get_the_title() .'</h4>
                         <p class="msg">' .get_the_content() .'</p></div></div></div>';
 

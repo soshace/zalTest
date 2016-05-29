@@ -32,17 +32,21 @@
 
     						<div class="block_float_l p50">
     							<div class="card_b">
-                    <a href="<?php echo get_the_permalink() ?>" class="image_link"><div class="cover"></div><div class="newsImgCard PhtoImgCard">
+                    <a href="<?php echo get_the_permalink() ?>" class="image_link"><div class="cover"></div>
                     <?php
     								if ( has_post_thumbnail() ) {
     									$image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large'  );
     									$image_attributes = wp_get_attachment_image_src( get_post_thumbnail_id(), 'thumbnail', $icon );
     									?>
-      								<img src="<?php echo $thumbnail_src[0] ?>">
+      								<div class="newsImgCard PhtoImgCard"><img src="<?php echo $thumbnail_src[0] ?>"></div>
     								<?php
-    								}
+                  } else{
+                    ?>
+                    <div class="newsImgCard PhtoImgCard" style="background: url(/wp-content/themes/lider/img/noimage565465654.gif) no-repeat center;"></div>
+                    <?php
+                  }
     								?>
-                  </div>
+
                     </a>
                     <div class="card_line_lr card_line_tb">
                       <h4><?php echo get_the_title() ?></h4>
