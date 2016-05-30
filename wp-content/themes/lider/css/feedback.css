@@ -112,7 +112,9 @@
 
 	.feedback .image {
 		position: relative;
-		height: 400px;
+		min-height: 270px;
+		max-height: 350px;
+		height: auto;
 	}
 
 	.feedback .offset33 {

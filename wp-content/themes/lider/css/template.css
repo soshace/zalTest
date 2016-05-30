@@ -378,4 +378,10 @@ button:hover, .link_button:hover {
 	.newsImgCard{
 		background-size: contain !important;
 	}
+
+	.newsImgCard{
+		min-height: 270px;
+		height: auto;
+		max-height: 350px;
+	}
 }

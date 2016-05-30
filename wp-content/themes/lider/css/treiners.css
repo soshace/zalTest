@@ -151,7 +151,9 @@
 
   .treiners .image {
 		position: relative;
-	  height: 400px
+		min-height: 270px;
+		height: auto;
+		max-height: 350px;
 	}
 
 	.treiners .offset33 {
