@@ -1,8 +1,4 @@
 var ds = ds || {};
-
-/**
- * Demo 4
- */
 ( function( $ ) {
 	var media;
 
@@ -88,34 +84,3 @@ var ds = ds || {};
 
 	$( media.init );
 } )( jQuery );
-
-//  var photoTableThis = $(this).closest(".photoTable");
-//  var inputsThisAttach = photoTableThis.find("input");
-//  inputsThisAttach.each(function() {
-//    $(this).val("");
-//  var attachmentIDDel = photoTableThis.find("#attachment-url");
-//  var attachmentIDDel = photoTableThis.find(".uploadBox");
-//  attachmentIDDel = attachmentIDDel.val();
-// });
-
-
-	// $(".upload_image_button").click(function(){
-	// 	var uploadBox = $(this).closest(".uploadBox");
-	// 	uploadBox.addClass("displayEverything");
-	// 	var send_attachment_bkp = wp.media.editor.send.attachment;
-	// 	var button = $(this);
-	// 	wp.media.editor.send.attachment = function(props, attachment) {
-	// 		$(button).parent().prev().attr("src", attachment.url);
-	// 		$(button).prev().val(attachment.id);
-	// 		console.log(attachment.url);
-	//
-	// 		wp.media.editor.send.attachment = send_attachment_bkp;
-	//
-	// 	}
-	//
-	// 	wp.media.editor.open(button);
-	// 	return false;
-	// });
-
-
-		//  });
