@@ -22,7 +22,6 @@ var ds = ds || {};
 			} );
 
 			this._frame.on( "ready", this.ready );
-
 			this._frame.state( "library" ).on( "select", this.select );
 
 			return this._frame;
