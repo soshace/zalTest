@@ -46,6 +46,8 @@ td ul li {
 	padding: 8px 4px;
 	border-bottom: #000 2px solid;
 	list-style: none;
+	min-height: 90px;
+  box-sizing: border-box;
 }
 
 td ul li:last-child {
