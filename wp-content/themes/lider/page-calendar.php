@@ -237,7 +237,7 @@
                               $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
                               ?>
                               <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
-                              <span class="time"><?php $timeTableText ?></span>
+                              <span class="time"><?php echo $timeTableText ?></span>
                               <p class="description"><?php echo $val6[$iCLV]->item_content ?></p></li>
                               <?php
                             }

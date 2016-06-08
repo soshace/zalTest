@@ -94,6 +94,7 @@ case 'button':
     echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a>
     <script>
     jQuery(function($){
+      $(".attachmItem .l40 a").attr("target","blank");
 
     var fieldsKey, d;
     $(document).on("click", ".mybutton", function(){
@@ -272,7 +273,7 @@ case 'button':
                 $attachmentID = $attachment->ID;
                 // $attachmentDate = $attachment->post_date;
                 $sel = $wpdb->get_row("SELECT post_content FROM wp_posts WHERE post_title = $attachment->ID AND post_parent = $post->ID ");
-                $thumbimg = wp_get_attachment_link( $attachment->ID, 'thumbnail', true );
+                $thumbimg = wp_get_attachment_link( $attachment->ID, 'thumbnail', false );
                 echo '<div class="attachmItem" id="'. $attachment->ID .'"><div class="l40">' . $thumbimg . '</div>';
                 if ($sel->post_content == ''){
                   echo '<div class="l60"><p class="descAttach">У данного фото нет описания</p>';

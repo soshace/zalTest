@@ -151,6 +151,12 @@ case 'button':
     echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить</a>
     <script>
     jQuery(function($){
+      $( "#calendarbox input" ).focus(function() {
+        $(this).removeClass("redClc");
+      });
+      $( "#calendarbox select" ).focus(function() {
+        $(this).removeClass("redClc");
+      });
     $(document).on("click", ".CLbuttonAdd", function(){
       if($("#calendarbox input").val() != ""){
         var time = $("#calendarbox #CLtime").val();
@@ -158,21 +164,35 @@ case 'button':
         var trenerID = $("#calendarbox #CLtrener").val();
         var itemday = '. $post->ID .';
 
-        $.ajax({
-          url: ajaxurl,
-          data:
-            {
-              "action": "addCLinsert",
-              "timeCL": time,
-              "descCL": desc,
-              "trenerIDCL": trenerID,
-              "itemday": itemday
-            },
-          type: "post",
-            success: function(data){
-              location.reload();
-            }
-          });
+        if (!time || !desc || !trenerID){
+          if (!time) {
+            $("#calendarbox #CLtime").addClass("redClc");
+          }
+          if (!desc) {
+            $("#calendarbox #CLdesc").addClass("redClc");
+          }
+          if (!trenerID) {
+            $("#calendarbox #CLtrener").addClass("redClc");
+          }
+        } else{
+          $.ajax({
+            url: ajaxurl,
+            data:
+              {
+                "action": "addCLinsert",
+                "timeCL": time,
+                "descCL": desc,
+                "trenerIDCL": trenerID,
+                "itemday": itemday
+              },
+            type: "post",
+              success: function(data){
+                location.reload();
+              }
+            });
+        }
+
+
       }
     });
     })
@@ -267,7 +287,7 @@ break;
           }
           $selLineCL = $wpdb->get_results("SELECT * FROM wp_calendar WHERE item_time = '12:00' AND itemday= $post->ID");
           if(count($selLineCL)>0){
-            echo '<table class="tableCL"><tr><td colspan="3" class="tableTime">11:00</td></tr>';
+            echo '<table class="tableCL"><tr><td colspan="3" class="tableTime">12:00</td></tr>';
             for ($iCLline = 0; $iCLline < count($selLineCL); $iCLline++) {
               $idTR = $selLineCL[$iCLline]->item_treiner;
               $selLineCLTR = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idTR");

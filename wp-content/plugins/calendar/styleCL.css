@@ -7,6 +7,14 @@
   overflow: hidden
 }
 
+#calendarbox .redClc{
+  border-color: red !important;
+}
+
+#calendarbox #CLdesc{
+  border: 1px solid gray;
+}
+
 .attachmentEmptyH{
   display: none !important;
 }

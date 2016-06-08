@@ -83,6 +83,10 @@
   margin-bottom: 48px;
 }
 
+.calendar_line_lr table td li{
+  min-height: 90px;
+}
+
 /*//// Media ////////////////////////////*/
 @media (max-width: 1290px) {
   .header .social {
