@@ -91,7 +91,7 @@ case 'textarea':
         <br /><span class="description">'.$field['desc'].'</span></td></tr></table>';
 break;
 case 'button':
-    echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a>
+    echo '<a href="javascript:;" class="'.$field['id'].' acf-button" data-editor="content" >+ Добавить фото</a><span class="errorPhotoLoad">Вы не выбрали фото</span>
     <script>
     jQuery(function($){
       $(".attachmItem .l40 a").attr("target","blank");
@@ -113,33 +113,26 @@ case 'button':
       var metakeyFile = [];
       var metakeyFileSrc = [];
       var metakeyText = [];
+      if ($(".attachment-fieldset.added").length > 0){
 
-      $(".attachment-fieldset.added").each(function() {
-        var xItem = $(this).find("#attachment-id");
-        xItem = xItem.val();
-        metakeyID.push(xItem);
-        xItem = $(this).find("#attachment-title");
-        xItem = xItem.val();
-        metakeyTitle.push(xItem);
-        xItem = $(this).find("#attachment-filename");
-        xItem = xItem.val();
-        metakeyFile.push(xItem);
-        xItem = $(this).find("#attachment-url");
-        xItem = xItem.val();
-        metakeyFileSrc.push(xItem);
-        xItem = $(this).find("#mytextarea");
-        xItem = xItem.val();
-        metakeyText.push(xItem);
-      });
-
-      console.log(metakeyID);
-      console.log(metakeyTitle);
-      console.log(metakeyFile);
-      console.log(metakeyFileSrc);
-      console.log(metakeyText);
-
-
-
+        $(".attachment-fieldset.added").each(function() {
+          var xItem = $(this).find("#attachment-id");
+          xItem = xItem.val();
+          metakeyID.push(xItem);
+          xItem = $(this).find("#attachment-title");
+          xItem = xItem.val();
+          metakeyTitle.push(xItem);
+          xItem = $(this).find("#attachment-filename");
+          xItem = xItem.val();
+          metakeyFile.push(xItem);
+          xItem = $(this).find("#attachment-url");
+          xItem = xItem.val();
+          metakeyFileSrc.push(xItem);
+          xItem = $(this).find("#mytextarea");
+          xItem = xItem.val();
+          metakeyText.push(xItem);
+        });
+        $("span.errorPhotoLoad").css("display", "none");
         $.ajax({
           url: ajaxurl,
           data:
@@ -159,6 +152,11 @@ case 'button':
               location.reload();
             }
           });
+      } else{
+        $("span.errorPhotoLoad").css("display", "inline-block");
+      }
+
+
 
         });
 
