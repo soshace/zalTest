@@ -26,7 +26,7 @@
 						</div>
 						<ul class="social">
 							<li>
-								<a href="<?php echo $vklider ?>" class="vk"></a>
+								<a href="<?php echo $vklider ?>" class="vk" target="blank"></a>
 							</li>
 						</ul>
 						<?php

@@ -30,13 +30,8 @@ if (have_posts()) :
 	for ($timeTable=6; $timeTable <=23 ; $timeTable++) {
 		global $wpdb;
 		$timeTableText = $timeTable .':00';
-		// $valN = $wpdb->get_results("SELECT wp_postmeta.meta_value,wp_calendar.item_content, wp_calendar.item_treiner, wp_calendar.itemday FROM wp_calendar INNER JOIN wp_postmeta ON wp_calendar.item_treiner=wp_postmeta.post_id AND wp_postmeta.meta_key = 'color' AND wp_calendar.item_time = '$timeTableText'");
 		$valN = $wpdb->get_results("SELECT wp_postmeta.meta_value,wp_calendar.item_content, wp_calendar.item_treiner, wp_calendar.itemday FROM wp_calendar INNER JOIN wp_postmeta ON wp_calendar.item_treiner=wp_postmeta.post_id AND wp_postmeta.meta_key = 'color' AND wp_calendar.item_time = '$timeTableText'");
-		// echo '<pre>';
-		// var_dump($valN);
-		// echo '</pre>';
 		$selLineCLCountN = count($valN);
-		// echo "fdgdfg =".$selLineCLCountN;
 			if ($selLineCLCountN != 0){
 				?>
 				<tr><td class="vertMid"><b><?php echo $timeTableText ?></b></td>

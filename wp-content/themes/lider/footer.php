@@ -14,7 +14,7 @@
             while (have_posts()) : the_post();
             $vklider = get_field( "vklider" );
             ?>
-              <a href="<?php echo $vklider ?>" class="vk"></a>
+              <a href="<?php echo $vklider ?>" class="vk" target="blank"></a>
             <?php
             endwhile;
           endif;
