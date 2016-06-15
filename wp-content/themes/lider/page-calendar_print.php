@@ -12,6 +12,7 @@
 	?>
   	<link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/60em/fonts.css">
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/calendar_print_2.css"/>
+		<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.js"></script>
     <body <?php body_class(); ?> >
 			<table cellspacing="0" cellpadding="0">
 					<tbody>
