@@ -14,11 +14,9 @@
     <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/css/calendar_print_2.css"/>
     <body <?php body_class(); ?> >
 			<table cellspacing="0" cellpadding="0">
-					<tbody><tr>
-							<td rowspan="2" &nbsp;<="" td="">
-							</td><td colspan="7"><h2>Расписание занятий</h2></td>
-					</tr>
+					<tbody>
 					<tr>
+							<td></td>
 							<td class="vertMid">Понедельник</td>
 							<td class="vertMid">Вторник</td>
 							<td class="vertMid">Среда</td>
@@ -32,25 +30,26 @@ if (have_posts()) :
 	for ($timeTable=6; $timeTable <=23 ; $timeTable++) {
 		global $wpdb;
 		$timeTableText = $timeTable .':00';
-
-		$valN = $wpdb->get_results("SELECT * FROM wp_calendar WHERE item_time = '$timeTableText'");
+		// $valN = $wpdb->get_results("SELECT wp_postmeta.meta_value,wp_calendar.item_content, wp_calendar.item_treiner, wp_calendar.itemday FROM wp_calendar INNER JOIN wp_postmeta ON wp_calendar.item_treiner=wp_postmeta.post_id AND wp_postmeta.meta_key = 'color' AND wp_calendar.item_time = '$timeTableText'");
+		$valN = $wpdb->get_results("SELECT wp_postmeta.meta_value,wp_calendar.item_content, wp_calendar.item_treiner, wp_calendar.itemday FROM wp_calendar INNER JOIN wp_postmeta ON wp_calendar.item_treiner=wp_postmeta.post_id AND wp_postmeta.meta_key = 'color' AND wp_calendar.item_time = '$timeTableText'");
+		// echo '<pre>';
 		// var_dump($valN);
+		// echo '</pre>';
 		$selLineCLCountN = count($valN);
+		// echo "fdgdfg =".$selLineCLCountN;
 			if ($selLineCLCountN != 0){
 				?>
 				<tr><td class="vertMid"><b><?php echo $timeTableText ?></b></td>
-					<td>
+
+					<td class="colorList">
 							<ul>
 				<?php
 				for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-					// echo $timeTableText;
-					$trenerIDuse = $valN[$iCLV]->item_treiner;
-					$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 					$idday = $valN[$iCLV]->itemday;
-					$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
+					$idday = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 					if ($idday->post_title == 'Понедельник'){
 						?>
-								<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+								<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 									<?php echo $valN[$iCLV]->item_content ?>
 								</li>
 						<?php
@@ -60,18 +59,15 @@ if (have_posts()) :
 					?>
 								</ul>
 						</td>
-						<td>
+						<td class="colorList">
 								<ul>
 					<?php
 					for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-						$trenerIDuse = $valN[$iCLV]->item_treiner;
-						$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 						$idday = $valN[$iCLV]->itemday;
 						$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 						if ($idday->post_title == 'Вторник'){
 							?>
-									<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+									<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 										<?php echo $valN[$iCLV]->item_content ?>
 									</li>
 							<?php
@@ -81,18 +77,15 @@ if (have_posts()) :
 						?>
 									</ul>
 							</td>
-							<td>
+							<td class="colorList">
 									<ul>
 						<?php
 						for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-							$trenerIDuse = $valN[$iCLV]->item_treiner;
-							$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 							$idday = $valN[$iCLV]->itemday;
 							$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 							if ($idday->post_title == 'Среда'){
 								?>
-										<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+										<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 											<?php echo $valN[$iCLV]->item_content ?>
 										</li>
 								<?php
@@ -102,18 +95,15 @@ if (have_posts()) :
 							?>
 										</ul>
 								</td>
-								<td>
+								<td class="colorList">
 										<ul>
 							<?php
 							for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-								$trenerIDuse = $valN[$iCLV]->item_treiner;
-								$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 								$idday = $valN[$iCLV]->itemday;
 								$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 								if ($idday->post_title == 'Четверг'){
 									?>
-											<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+											<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 												<?php echo $valN[$iCLV]->item_content ?>
 											</li>
 									<?php
@@ -123,18 +113,15 @@ if (have_posts()) :
 								?>
 											</ul>
 									</td>
-									<td>
+									<td class="colorList">
 											<ul>
 								<?php
 								for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-									$trenerIDuse = $valN[$iCLV]->item_treiner;
-									$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 									$idday = $valN[$iCLV]->itemday;
 									$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 									if ($idday->post_title == 'Пятница'){
 										?>
-												<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+												<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 													<?php echo $valN[$iCLV]->item_content ?>
 												</li>
 										<?php
@@ -144,18 +131,15 @@ if (have_posts()) :
 									?>
 												</ul>
 										</td>
-										<td>
+										<td class="colorList">
 												<ul>
 									<?php
 									for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-										$trenerIDuse = $valN[$iCLV]->item_treiner;
-										$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 										$idday = $valN[$iCLV]->itemday;
 										$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 										if ($idday->post_title == 'Суббота'){
 											?>
-													<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+													<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 														<?php echo $valN[$iCLV]->item_content ?>
 													</li>
 											<?php
@@ -165,28 +149,23 @@ if (have_posts()) :
 										?>
 													</ul>
 											</td>
-											<td>
+											<td class="colorList">
 													<ul>
 										<?php
 										for ($iCLV=0; $iCLV < $selLineCLCountN; $iCLV++) {
-
-											$trenerIDuse = $valN[$iCLV]->item_treiner;
-											$selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
 											$idday = $valN[$iCLV]->itemday;
 											$idday  = $wpdb->get_row("SELECT post_title FROM wp_posts WHERE ID = $idday");
 											if ($idday->post_title == 'Воскресенье'){
 												?>
-														<li style="background: <?php echo $selLineCLcolorV->meta_value ?>">
+														<li style="background: <?php echo $valN[$iCLV]->meta_value ?>">
 															<?php echo $valN[$iCLV]->item_content ?>
 														</li>
 												<?php
 												}
 											}
-
 											?>
 														</ul>
 												</td>
-
 					</tr>
 					<?php
 			}
@@ -197,5 +176,16 @@ if (have_posts()) :
 
 </tbody>
 </table>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$( "td.colorList" ).each(function( index ) {
+			var liLast = $(this).find("li:last");
+			if (liLast) {
+				var liLastBg = liLast.css("background-color");
+				$(this).css("background-color", liLastBg);
+			}
+		});
+	});
+</script>
   </body>
 </html>
