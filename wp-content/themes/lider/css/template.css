@@ -364,7 +364,10 @@ button:hover, .link_button:hover {
 
 @media (max-width: 800px) {
 	.newsImgCard{
-		min-height: 350px;
+		min-height: 250px;
+		height: 250px;
+		overflow: hidden;
+    background-size: cover !important;
 	}
 }
 
@@ -380,8 +383,8 @@ button:hover, .link_button:hover {
 	}
 
 	.newsImgCard{
-		min-height: 270px;
-		height: auto;
-		max-height: 350px;
+		min-height: 350px;
+		height: 350px;
+		overflow: hidden;
 	}
 }
