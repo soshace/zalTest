@@ -36,5 +36,10 @@
     		</section>
       </div>
       <?php get_footer(); ?>
+      <script type="text/javascript">
+        $(document).ready(function() {
+          $(".aboutLine a").attr("target","blank");
+        });
+      </script>
 </body>
 </html>
