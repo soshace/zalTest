@@ -362,12 +362,19 @@ button:hover, .link_button:hover {
 	}
 }
 
+@media (max-width: 1200px) {
+	.newsImgCard{
+		min-height: 300px;
+		height: 300px;
+		overflow: hidden;
+	}
+}
+
 @media (max-width: 800px) {
 	.newsImgCard{
 		min-height: 250px;
 		height: 250px;
-		overflow: hidden;
-    background-size: cover !important;
+		background-size: contain !important;
 	}
 }
 
@@ -379,12 +386,8 @@ button:hover, .link_button:hover {
 
 @media (max-width: 480px) {
 	.newsImgCard{
-		background-size: contain !important;
-	}
-
-	.newsImgCard{
-		min-height: 350px;
-		height: 350px;
-		overflow: hidden;
+		min-height: 200px;
+    height: auto;
+    overflow: hidden;
 	}
 }
