@@ -11,8 +11,10 @@
     // Start the loop.
     while ( have_posts() ) : the_post();?>
     <div class="section_line_lr conteiner">
-      <a href="/album" class="back_link backHistory">Назад к альбомам</a>
             <h1><?php the_title(); ?></h1>
+            <div>
+              <a href="/album" class="back_link backHistory">Назад к альбомам</a>
+            </div>
             <?php
             $args = array(
               'post_type' => 'attachment',

@@ -19,8 +19,8 @@
 
                   <section class="section_t calendar calendarXL">
                         <div class="conteiner section_line_lr calendar_line_lr">
-                          <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
                           <h1>Расписание</h1>
+                          <a href="/calendar_print" target="blank" class="print">Версия для печати</a>
                         <div class="card_b">
 
                         <table cellspacing="0" cellpadding="0">
@@ -214,7 +214,7 @@
                               $trenerIDuse = $val6[$iCLV]->item_treiner;
                               $selLineCLcolorV = $wpdb->get_row("SELECT meta_value FROM wp_postmeta WHERE post_id = $trenerIDuse AND meta_key = 'color'");
                               ?>
-                              <li class="card_line_tb time_line"><span style="background: <?php echo $valN[$iCLV]->meta_value ?>" class="marker"></span>
+                              <li class="card_line_tb time_line"><span style="background: <?php echo $selLineCLcolorV->meta_value ?>" class="marker"></span>
                               <span class="time"><?php echo $timeTableText ?></span>
                               <p class="description"><?php echo $val6[$iCLV]->item_content ?></p></li>
                               <?php

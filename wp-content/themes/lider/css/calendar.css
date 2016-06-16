@@ -12,6 +12,7 @@
 .calendar .print {
   line-height: 1;
   display: inline-block;
+  margin: 0 12px 12px;
 }
 
 .section_line_lr {
