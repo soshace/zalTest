@@ -16,8 +16,11 @@
     <body <?php body_class(); ?> >
 			<table cellspacing="0" cellpadding="0">
 					<tbody>
+						<tr>
+								<td rowspan="2" &nbsp;</td>
+								<td colspan="7"><h2>Расписание занятий</h2></td>
+						</tr>
 					<tr>
-							<td></td>
 							<td class="vertMid">Понедельник</td>
 							<td class="vertMid">Вторник</td>
 							<td class="vertMid">Среда</td>
