@@ -22,7 +22,7 @@ function AU_get_slider(){
         if (have_posts()) : while (have_posts()) : the_post();
             $aboutUsTextblock .='
                 <h1>' .get_the_title() .'</h1>
-                <div class="aboutUsT">' . get_the_excerpt() .'</p>
+                <div class="aboutUsT"><p>' . get_the_content() .'</p></div>
                 <a class="link_button" href="/about">О центре</a>';
 
         endwhile; endif; wp_reset_query();

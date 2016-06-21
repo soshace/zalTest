@@ -350,8 +350,12 @@ button:hover, .link_button:hover {
 	overflow: hidden;
 }
 
-.photoExcerpt p{
+.photoExcerpt p, .aboutUsT{
 	white-space: pre-line;
+}
+
+.about .link_button{
+	margin-bottom: 0;
 }
 
 @media (max-width: 1360px) {

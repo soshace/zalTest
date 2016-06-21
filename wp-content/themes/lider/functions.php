@@ -62,7 +62,7 @@ if ( function_exists( 'add_theme_support' ) ){
 
 function edit_admin_menus() {
     global $menu;
-    $menu[5][0] = 'Статьи';
+    $menu[5][0] = 'Услуги';
 }
 add_action( 'admin_menu', 'edit_admin_menus' );
 add_filter('custom_menu_order', '__return_true'); // Применить custom_menu_order

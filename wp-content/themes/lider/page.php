@@ -7,7 +7,7 @@
 		<?php get_sidebar(); ?>
 		<section class="blog section_t">
 			<div class="section_line_lr conteiner">
-				<h1>Статьи</h1>
+				<h1>Услуги</h1>
 			</div>
 			<div class="section_line_lr conteiner">
 
